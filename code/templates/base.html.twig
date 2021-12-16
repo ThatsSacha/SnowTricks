@@ -6,9 +6,9 @@
         <link rel="stylesheet" href="build/assets/styles/css/app.css">
     </head>
     <body>
-        <header>
-            {% block header %}{% endblock %}
-        </header>
+       {% block header %}
+        {% include 'header/header.html.twig' %}
+       {% endblock %}
         <main>
             {% block main %}{% endblock %}
         </main>

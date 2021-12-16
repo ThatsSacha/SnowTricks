@@ -1,0 +1,16 @@
+header {
+  position: fixed;
+  height: 5vh;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html body main {
+  padding-top: 6vh;
+}
+
+/*# sourceMappingURL=app.css.map */
