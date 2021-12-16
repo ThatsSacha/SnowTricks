@@ -6,11 +6,12 @@
         <link rel="stylesheet" href="build/assets/styles/css/app.css">
     </head>
     <body>
-        <header>
-            {% block header %}{% endblock %}
-        </header>
-        <main>
-            {% block main %}{% endblock %}
-        </main>
+        {% block header %}
+            {% include 'header/header.html.twig' %}
+        {% endblock %}
+        {% block main %}{% endblock %}
+        {% block footer %}
+            {% include 'footer/footer.html.twig' %}
+        {% endblock %}
     </body>
 </html>
