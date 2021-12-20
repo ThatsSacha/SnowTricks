@@ -1,0 +1,18 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Londrina Solid', cursive;
+}
+
+html {
+    body {
+        main {
+            padding: 8vh 10% 0 10%;
+            width: 100%;
+            background-color: $broken-white;
+            height: auto;
+            min-height: 95vh;
+        }
+    }
+}

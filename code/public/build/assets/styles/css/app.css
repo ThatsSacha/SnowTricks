@@ -1,0 +1,163 @@
+@import url("https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;300;400;900&display=swap");
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css");
+header {
+  position: fixed;
+  height: 7vh;
+  width: 100%;
+  background-color: #171332;
+  display: flex;
+  align-items: center;
+  padding: 10px 10%;
+  justify-content: space-between;
+}
+header a.logo {
+  color: #4ae3b5;
+  font-size: 30px;
+  text-decoration: none;
+  font-weight: 900;
+}
+header ul {
+  display: flex;
+}
+header ul li {
+  list-style: none;
+  margin: 0 10px;
+}
+header ul li a {
+  text-decoration: none;
+  color: #eeeeee;
+  font-size: 18px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  transition: 150ms;
+}
+header ul li a:hover {
+  color: #4ae3b5;
+  letter-spacing: 1.8px;
+}
+
+footer {
+  height: 5vh;
+  padding: 10px 10%;
+  display: flex;
+  align-items: center;
+  background-color: #171332;
+}
+footer span {
+  color: white;
+  font-weight: 100;
+  letter-spacing: 1.3px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Londrina Solid", cursive;
+}
+
+html body main {
+  padding: 8vh 10% 0 10%;
+  width: 100%;
+  background-color: #eeeeee;
+  height: auto;
+  min-height: 95vh;
+}
+
+main.index {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+main.index h1 {
+  font-size: 70px;
+  text-transform: uppercase;
+  color: #171332;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-align: center;
+  margin-bottom: 50px;
+  text-shadow: 7px 7px 1px #4ae3b59e;
+}
+main.index svg {
+  height: 250px;
+}
+main.index button {
+  margin-top: 50px;
+  box-shadow: 15px 10px 3px #4ae3b5;
+}
+main.index button:hover {
+  box-shadow: 20px 15px 6px #4ae3b5;
+}
+
+button {
+  width: auto;
+  padding: 1% 40px;
+  border-radius: 8px;
+  outline: none;
+  background-color: #171332;
+  color: white;
+  height: auto;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  transition: 150ms;
+}
+button:hover {
+  transform: translate(0, -2.5px);
+  box-shadow: 10px 10px 6px #4ae3b5;
+}
+
+.card {
+  padding: 20px 25px;
+  border-radius: 8px;
+}
+.card.white {
+  background-color: white;
+}
+.card h1 {
+  margin-bottom: 20px;
+  color: #171332;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 26px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+form div div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+form div div label {
+  font-weight: 300;
+  color: #444444;
+  margin-bottom: 5px;
+}
+form button {
+  align-self: flex-end;
+}
+
+input {
+  border-radius: 8px;
+  border: 3px solid transparent;
+  height: 35px;
+  padding: 5px;
+  background: #eeeeee;
+  color: #171332;
+  transition: 150ms;
+}
+input:focus {
+  outline: none;
+  border: 3px solid #4ae3b5;
+}
+input::placeholder {
+  font-weight: 300;
+  letter-spacing: 1.1px;
+}
+
+/*# sourceMappingURL=app.css.map */

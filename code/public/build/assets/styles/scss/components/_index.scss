@@ -1,0 +1,32 @@
+main {
+    &.index {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        h1 {
+            font-size: 70px;
+            text-transform: uppercase;
+            color: #171332;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-align: center;
+            margin-bottom: 50px;
+            text-shadow: 7px 7px 1px #4ae3b59e;
+        }
+
+        svg {
+            height: 250px;
+        }
+
+        button {
+            margin-top: 50px;
+            box-shadow: 15px 10px 3px $green;
+
+            &:hover {
+                box-shadow: 20px 15px 6px $green;
+            }
+        }
+    }
+}
