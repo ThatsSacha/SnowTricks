@@ -5,6 +5,10 @@ namespace App\Service;
 use App\Entity\User;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Form\Form;
+use Symfony\Component\Form\Test\FormInterface;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class UserService {
@@ -20,27 +24,51 @@ class UserService {
 
     /**
      * @param User $user
+     * @param Request $request
      */
-    public function new(User $user) {
+    public function new(User $user, Request $request) {
         $mail = $user->getEmail();
         $pseudo = $user->getPseudo();
 
         if (!empty($mail) && !empty($pseudo)) {
-            $users = $this->repo->findBy(array('email' => $mail, 'pseudo' => $pseudo));
+            $isMailValid = filter_var($mail, FILTER_VALIDATE_EMAIL);
 
-            if (count($users) === 0) {
-                $cover = $this->verifyAndRenameCover($user);
-                $password = $user->getPassword();
-                $isPasswordValid = $this->isPasswordValid($password);
+            if ($isMailValid) {
+                $usersByMail = $this->repo->findBy(array('email' => $mail));
+                $usersByPseudo = $this->repo->findBy(array('pseudo' => $pseudo));
+                
+                if (count($usersByMail) === 0 && count($usersByPseudo) === 0) {
+                    $password = $user->getPassword();
+                    $isPasswordValid = $this->isPasswordValid($password);
+    
+                    if ($isPasswordValid) {
+                        $password = $this->passwordHasher->hashPassword($user, $password);
+                        $user->setPassword($password);
+    
+                        $cover = $request->files->get('user')['cover'];
+                        $cover = $this->verifyAndRenameCover($cover);
+        
+                        if ($cover !== null) {
+                            $user->setCover($cover);
+                            $token = $this->generateToken();
+                            $user->setToken($token);
+                            $user->setCreatedAt(date_create());
 
-                if ($isPasswordValid) {
-                    $password = $this->passwordHasher->hashPassword($user, $password);
-                    $user->setPassword($password);
-                    $this->emi->persist($user);
-                    $this->emi->flush();
+                            $this->emi->persist($user);
+                            $this->emi->flush();
+                        }
+                    }
                 }
             }
         }
+    }
+
+    /**
+     * @return string
+     */
+    private function generateToken(): string {
+        $token = hash('sha512', random_bytes(32) . time());
+        return $token;
     }
 
     /**
@@ -60,27 +88,34 @@ class UserService {
     }
 
     /**
-     * @param User $user
+     * @param UploadedFile $file
      * 
-     * @return string
+     * @return string|null
      */
-    public function verifyAndRenameCover(User $user): string {
-        $cover = $user->getCover();
+    public function verifyAndRenameCover(UploadedFile $file): string|null {
+        $isExtensionAuthorized = $this->isExtensionAuthorized($file);
 
-        if (!empty($cover)) {
-            $isExtensionAuthorized = $this->isExtensionAuthorized($cover);
+        if ($isExtensionAuthorized) {
+            $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+            $file->move('../public/img/users', $fileName);
+
+            return $fileName;
         }
 
-        return '';
+        return null;
     }
 
     /**
-     * @param FileUpload $cover
+     * @param UploadedFile $file
      */
-    public function isExtensionAuthorized($cover) {
-        dd($cover->guessExtension());
+    public function isExtensionAuthorized(UploadedFile $file) {
         $authorizedExtensions = array('jpg', 'jpeg', 'png');
-        $extension = $cover->guessExtension();
-        dd($extension);
+        $extension = $file->guessExtension();
+        
+        if (in_array($extension, $authorizedExtensions)) {
+            return true;
+        }
+
+        return false;
     }
 }

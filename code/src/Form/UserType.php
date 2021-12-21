@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -14,27 +15,31 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email', null, [
-                'label' => 'Adresse mail',
+            ->add('email', EmailType::class, [
+                'label' => 'Adresse mail *',
+                'help' => 'Format attendu : prefixe@domaine.com',
                 'attr' => array(
                     'label' => 'Adresse mail',
                     'placeholder' => 'Ex: mail@snowtricks.com'
                 )
             ])
             ->add('password', PasswordType::class, [
-                'label' => 'Mot de passe',
+                'label' => 'Mot de passe *',
+                'help' => 'Doit contenir minimum 8 caractères et au moins 1 chiffre',
                 'attr' => array(
                     'placeholder' => '*******',
                 )
             ])
             ->add('pseudo', null, [
-                'label' => 'Pseudo',
+                'label' => 'Pseudo *',
+                'help' => 'Les espaces seront supprimés',
                 'attr' => array(
                     'placeholder' => 'Ex: JamesDupont9',
                 )
             ])
             ->add('cover', FileType::class, [
-                'label' => 'Photo de profile'
+                'label' => 'Photo de profile *',
+                'help' => 'Extensions autorisées : jpg, jpeg & png',
             ])
         ;
     }
