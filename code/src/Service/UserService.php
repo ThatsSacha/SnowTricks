@@ -15,11 +15,15 @@ class UserService {
     private $emi;
     private $repo;
     private $passwordHasher;
+    private $mailTemplate;
+    private $mailerService;
 
-    public function __construct(UserRepository $repo, EntityManagerInterface $emi, UserPasswordHasherInterface $passwordHasher) {
+    public function __construct(UserRepository $repo, EntityManagerInterface $emi, UserPasswordHasherInterface $passwordHasher, MailTemplateService $mailTemplate, MailerService $mailerService) {
         $this->emi = $emi;
         $this->repo = $repo;
         $this->passwordHasher = $passwordHasher;
+        $this->mailTemplate = $mailTemplate;
+        $this->mailerService = $mailerService;
     }
 
     /**
@@ -56,6 +60,8 @@ class UserService {
 
                             $this->emi->persist($user);
                             $this->emi->flush();
+
+                            $this->mailerService->sendEmail($mail, $user->getPseudo() . ', valide ton compte !', $this->mailTemplate->getValidateAccount($user));
                         }
                     }
                 }
