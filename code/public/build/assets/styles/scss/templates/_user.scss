@@ -9,4 +9,16 @@ main {
             text-align: center;
         }
     }
+
+    &.login {
+        form {
+            a {
+                &.reset-password {
+                    color: $grey;
+                    font-family: Roboto;
+                    font-size: 14px;
+                }
+            }
+        }
+    }
 }

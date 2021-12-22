@@ -240,5 +240,10 @@ main.created h2 {
   align-self: center;
   text-align: center;
 }
+main.login form a.reset-password {
+  color: #7e7d7d;
+  font-family: Roboto;
+  font-size: 14px;
+}
 
 /*# sourceMappingURL=app.css.map */

@@ -145,4 +145,71 @@ class UserService {
 
         return false;
     }
+
+    /**
+     * @param Request $request
+     */
+    public function sendResetPassword(Request $request) {
+        $mail = $request->get('email');
+        $user = $this->repo->findOneBy(array('email' => $mail));
+
+        if ($user !== null) {
+            $token = $this->generateToken();
+            $user->setToken($token);
+
+            $this->emi->persist($user);
+            $this->emi->flush();
+
+            $this->mailerService->sendEmail($mail, 'Réinitialise ton mot de passe', $this->mailTemplate->getResetPassword($user));
+        }
+    }
+
+    /**
+     * @param string $token
+     */
+    public function verifyResetPassword(string $token) {
+        $user = $this->repo->findOneBy(array('token' => $token));
+
+        if ($user !== null) {
+            $token = $this->generateToken();
+            $user->setToken($token);
+
+            $this->emi->persist($user);
+            $this->emi->flush();
+
+            return $token;
+        }
+    }
+
+    /**
+     * @param Request $request
+     */
+    public function setPassword(Request $request) {
+        $token = $request->get('token');
+        $user = $this->repo->findOneBy(array('token' => $token));
+        $error = null;
+
+        if ($user !== null) {
+            $user->setToken(null);
+
+            $password = $request->get('password');
+            $isPasswordValid = $this->isPasswordValid($password);
+
+            if ($isPasswordValid) {
+                $password = $this->passwordHasher->hashPassword($user, $password);
+                $user->setPassword($password);
+
+                $this->emi->persist($user);
+                $this->emi->flush();
+
+                $error = null;
+            } else {
+                $error = 'Le format du mot de passe est erroné';
+            }
+        } else {
+            $error = 'Le token est invalide';
+        }
+
+        return $error;
+    }
 }

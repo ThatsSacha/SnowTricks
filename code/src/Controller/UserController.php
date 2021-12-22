@@ -51,14 +51,6 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'user_show', methods: ['GET'])]
-    public function show(User $user): Response
-    {
-        return $this->render('user/show.html.twig', [
-            'user' => $user,
-        ]);
-    }
-
     #[Route('/validate-account/{token}', name: 'user_validate', methods: ['GET'])]
     public function validate(string $token): Response
     {
@@ -69,32 +61,48 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'user_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, User $user, EntityManagerInterface $entityManager): Response
+    #[Route('/reset-password', name: 'user_reset-password', methods: ['GET'])]
+    public function resetPassword(): Response
     {
-        $form = $this->createForm(UserType::class, $user);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
-
-            return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->renderForm('user/edit.html.twig', [
-            'user' => $user,
-            'form' => $form,
+        return $this->render('user/reset-password.html.twig', [
+            'isSent' => false
         ]);
     }
 
-    #[Route('/{id}', name: 'user_delete', methods: ['POST'])]
-    public function delete(Request $request, User $user, EntityManagerInterface $entityManager): Response
+    #[Route('/reset-password', name: 'user_send-reset-password', methods: ['POST'])]
+    public function sendResetPassword(Request $request): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
-            $entityManager->remove($user);
-            $entityManager->flush();
-        }
+        $this->service->sendResetPassword($request);
+        return $this->render('user/reset-password.html.twig', [
+            'isSent' => true
+        ]);
+    }
 
-        return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
+    #[Route('/reset-password/{token}', name: 'user_verify-reset-password', methods: ['GET'])]
+    public function verifyResetPassword(string $token): Response
+    {
+        $token = $this->service->verifyResetPassword($token);
+
+        return $this->render('user/set-password.html.twig', [
+            'token' => $token,
+            'error' => null
+        ]);
+    }
+
+    #[Route('/set-password', name: 'user_set-password', methods: ['GET', 'POST'])]
+    public function setPassword(Request $request): Response
+    {
+        $error = $this->service->setPassword($request);
+
+        if ($error !== null) {
+            return $this->render('user/set-password.html.twig', [
+                'token' => $request->get('token'),
+                'error' => $error
+            ]);
+        } else {
+            return $this->redirectToRoute('app_login', [
+                'success' => true
+            ]);
+        }
     }
 }
