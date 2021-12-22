@@ -124,4 +124,25 @@ class UserService {
 
         return false;
     }
+
+    /**
+     * @param string $token
+     * 
+     * @return bool
+     */
+    public function validateAccount(string $token): bool {
+        $user = $this->repo->findOneBy(array('token' => $token));
+
+        if ($user !== null) {
+            $user->setToken(null)
+                ->setIsAccountConfirmed(true);
+
+            $this->emi->persist($user);
+            $this->emi->flush();
+
+            return true;
+        }
+
+        return false;
+    }
 }

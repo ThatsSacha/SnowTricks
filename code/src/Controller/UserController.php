@@ -59,6 +59,16 @@ class UserController extends AbstractController
         ]);
     }
 
+    #[Route('/validate-account/{token}', name: 'user_validate', methods: ['GET'])]
+    public function validate(string $token): Response
+    {
+        $isValidated = $this->service->validateAccount($token);
+
+        return $this->render('user/validate-account.html.twig', [
+            'isValidated' => $isValidated,
+        ]);
+    }
+
     #[Route('/{id}/edit', name: 'user_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {

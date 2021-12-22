@@ -31,7 +31,7 @@ class MailTemplateService {
                     >
                         Nous t\'envoyons ce mail afin que tu confirmes ton inscription chez SnowTricks.<br/>Cliques sur le lien ci-dessous afin de valider ton compte !
                     </h2>
-                    <a href="'. $_ENV['APP_URL'] .'/validate-account/'. $user->getToken() .'"
+                    <a href="'. $_ENV['APP_URL'] .'/user/validate-account/'. $user->getToken() .'"
                         style="border-radius: 8px;text-decoration:none;padding:20px 10px;background-color:#171332;color:white;font-size:16px;font-weight:600;min-width:200px;font-family:\'Helvetica\';text-align: center;display:inline-block;"
                     >
                        Valider mon compte
