@@ -2,8 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\TrickRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\TrickRepository;
+use Symfony\Component\Validator\Constraints\Unique;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=TrickRepository::class)
@@ -19,11 +22,14 @@ class Trick
 
     /**
      * @ORM\Column(type="string", length=255)
+     * Assert\NotBlank
+     * @Assert\Unique
      */
     private $name;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank
      */
     private $description;
 

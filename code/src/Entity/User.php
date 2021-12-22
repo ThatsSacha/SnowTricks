@@ -2,13 +2,16 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints\Email;
+use Symfony\Component\Validator\Constraints\Unique;
+use Symfony\Component\Validator\Constraints\NotNull;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints\NotCompromisedPassword;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 /**
@@ -25,6 +28,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @Assert\Email(message="L'adresse '{{ value }}' n'est pas au bon format")
+     * @Assert\Unique(message="Cette adresse email est déjà utilisée")
+     * @Assert\NotBlank
      * @ORM\Column(type="string", length=180, unique=true)
      */
     private $email;
@@ -37,11 +42,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
+     * @@Assert\NotBlank
+     * @Assert\NotCompromisedPassword
      */
     private $password;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $pseudo;
 
