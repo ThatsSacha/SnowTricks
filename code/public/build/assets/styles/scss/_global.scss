@@ -35,6 +35,15 @@ html {
                 align-self: center;
                 height: 300px;
             }
+
+            a {
+                color: $blue;
+                text-decoration: none;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
         }
     }
 }

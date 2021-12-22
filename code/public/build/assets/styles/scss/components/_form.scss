@@ -3,6 +3,44 @@ form {
     flex-direction: column;
 
     div {
+        &.error {
+            background: $red-transparent;
+            display: flex;
+            align-items: center;
+            padding: 20px 10px;
+            margin-bottom: 20px;
+            border: 1px solid $red;
+            border-radius: $border-radius;
+
+            div {
+                margin-bottom: unset;
+                color: white;
+                font-family: Roboto;
+                font-weight: 400;
+                width: 100%;
+                display: block;
+            }
+        }
+
+        &.success {
+            background: $green-transparent;
+            display: flex;
+            align-items: center;
+            padding: 20px 10px;
+            margin-bottom: 20px;
+            border: 1px solid $green;
+            border-radius: $border-radius;
+
+            div {
+                margin-bottom: unset;
+                color: white;
+                font-family: Roboto;
+                font-weight: 400;
+                width: 100%;
+                display: block;
+            }
+        }
+
         div {
             display: flex;
             flex-direction: column;

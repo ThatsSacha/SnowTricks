@@ -83,6 +83,13 @@ html body main svg {
   align-self: center;
   height: 300px;
 }
+html body main a {
+  color: #171332;
+  text-decoration: none;
+}
+html body main a:hover {
+  text-decoration: underline;
+}
 
 main.index {
   display: flex;
@@ -119,6 +126,7 @@ button {
   background-color: #171332;
   color: white;
   height: auto;
+  min-height: 35px;
   font-size: 20px;
   border: none;
   cursor: pointer;
@@ -151,6 +159,40 @@ button:hover {
 form {
   display: flex;
   flex-direction: column;
+}
+form div.error {
+  background: #e34a4acc;
+  display: flex;
+  align-items: center;
+  padding: 20px 10px;
+  margin-bottom: 20px;
+  border: 1px solid #e34a4a;
+  border-radius: 8px;
+}
+form div.error div {
+  margin-bottom: unset;
+  color: white;
+  font-family: Roboto;
+  font-weight: 400;
+  width: 100%;
+  display: block;
+}
+form div.success {
+  background: #4ae3b5a6;
+  display: flex;
+  align-items: center;
+  padding: 20px 10px;
+  margin-bottom: 20px;
+  border: 1px solid #4ae3b5;
+  border-radius: 8px;
+}
+form div.success div {
+  margin-bottom: unset;
+  color: white;
+  font-family: Roboto;
+  font-weight: 400;
+  width: 100%;
+  display: block;
 }
 form div div {
   display: flex;
