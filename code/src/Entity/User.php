@@ -9,6 +9,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\Unique;
 use Symfony\Component\Validator\Constraints\NotNull;
+use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints\NotCompromisedPassword;
@@ -27,10 +28,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $id;
 
     /**
-     * @Assert\Email(message="L'adresse '{{ value }}' n'est pas au bon format")
-     * @Assert\Unique(message="Cette adresse email est déjà utilisée")
-     * @Assert\NotBlank
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\Email(message="L'adresse '{{ value }}' n'est pas au bon format")
+     * @Assert\NotBlank
      */
     private $email;
 
@@ -42,7 +42,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
-     * @@Assert\NotBlank
+     * @Assert\NotBlank
      * @Assert\NotCompromisedPassword
      */
     private $password;

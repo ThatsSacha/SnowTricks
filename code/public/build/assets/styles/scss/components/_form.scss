@@ -59,6 +59,22 @@ form {
                 color: $grey;
                 margin-top: 5px;
             }
+
+            ul {
+                background-color: $red-transparent;
+                border-radius: $border-radius;
+                border: 1px solid $red;
+                padding: 10px;
+                margin-bottom: 10px;
+
+                li {
+                    color: white;
+                    list-style: none;
+                    font-family: 'Roboto';
+                    font-size: 14px;
+                    font-weight: 400;
+                }
+            }
         }
     }
 
@@ -67,10 +83,9 @@ form {
     }
 }
 
-input {
+input, textarea {
     border-radius: $border-radius;
     border: 3px solid transparent;
-    height: 35px;
     padding: 5px;
     background: $broken-white;
     color: $blue;
@@ -85,4 +100,13 @@ input {
         font-weight: 300;
         letter-spacing: 1.1px;
     }
+}
+
+input {
+    height: 35px;
+}
+
+textarea {
+    resize: vertical;
+    height: 100px;
 }

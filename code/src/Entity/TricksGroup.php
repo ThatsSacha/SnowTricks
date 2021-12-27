@@ -2,8 +2,10 @@
 
 namespace App\Entity;
 
-use App\Repository\TricksGroupRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\TricksGroupRepository;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=TricksGroupRepository::class)

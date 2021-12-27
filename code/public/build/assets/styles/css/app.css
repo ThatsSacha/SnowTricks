@@ -84,7 +84,7 @@ html body main svg {
   height: 300px;
 }
 html body main a {
-  color: #171332;
+  color: #2a5d67;
   text-decoration: none;
 }
 html body main a:hover {
@@ -211,26 +211,48 @@ form div div p {
   color: #7e7d7d;
   margin-top: 5px;
 }
+form div div ul {
+  background-color: #e34a4acc;
+  border-radius: 8px;
+  border: 1px solid #e34a4a;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+form div div ul li {
+  color: white;
+  list-style: none;
+  font-family: "Roboto";
+  font-size: 14px;
+  font-weight: 400;
+}
 form button {
   align-self: flex-end;
 }
 
-input {
+input, textarea {
   border-radius: 8px;
   border: 3px solid transparent;
-  height: 35px;
   padding: 5px;
   background: #eeeeee;
   color: #171332;
   transition: 150ms;
 }
-input:focus {
+input:focus, textarea:focus {
   outline: none;
   border: 3px solid #4ae3b5;
 }
-input::placeholder {
+input::placeholder, textarea::placeholder {
   font-weight: 300;
   letter-spacing: 1.1px;
+}
+
+input {
+  height: 35px;
+}
+
+textarea {
+  resize: vertical;
+  height: 100px;
 }
 
 main.created svg {
@@ -244,6 +266,28 @@ main.login form a.reset-password {
   color: #7e7d7d;
   font-family: Roboto;
   font-size: 14px;
+}
+
+main.trick-list .trick-item {
+  border-radius: 8px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  text-align: center;
+}
+main.trick-list .trick-item .top, main.trick-list .trick-item .bottom {
+  width: 100%;
+}
+main.trick-list .trick-item .top {
+  height: 40%;
+}
+main.trick-list .trick-item .bottom {
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
 }
 
 /*# sourceMappingURL=app.css.map */

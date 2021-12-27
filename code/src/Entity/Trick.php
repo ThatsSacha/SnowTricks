@@ -22,8 +22,7 @@ class Trick
 
     /**
      * @ORM\Column(type="string", length=255)
-     * Assert\NotBlank
-     * @Assert\Unique
+     * @Assert\NotBlank
      */
     private $name;
 
@@ -43,6 +42,11 @@ class Trick
      * @ORM\JoinColumn(nullable=false)
      */
     private $createdBy;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $slug;
 
     public function getId(): ?int
     {
@@ -93,6 +97,18 @@ class Trick
     public function setCreatedBy(?User $createdBy): self
     {
         $this->createdBy = $createdBy;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }

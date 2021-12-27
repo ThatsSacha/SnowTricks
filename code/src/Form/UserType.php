@@ -19,7 +19,6 @@ class UserType extends AbstractType
                 'label' => 'Adresse mail *',
                 'help' => 'Format attendu : prefixe@domaine.com',
                 'attr' => array(
-                    'label' => 'Adresse mail',
                     'placeholder' => 'Ex: mail@snowtricks.com'
                 )
             ])
