@@ -289,5 +289,67 @@ main.trick-list .trick-item .bottom {
   justify-content: space-between;
   padding: 20px;
 }
+main.trick-detail {
+  padding: 10% 15%;
+}
+main.trick-detail .img-container {
+  background-color: #171332;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+  height: 400px;
+}
+main.trick-detail .img-container h1 {
+  font-size: 52px;
+  color: white;
+}
+main.trick-detail .bottom {
+  background-color: white;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+main.trick-detail .bottom .trick-media-list {
+  display: flex;
+  margin: 20px;
+  overflow: scroll;
+}
+main.trick-detail .bottom .trick-media-list div {
+  background-color: #171332;
+  height: 60px;
+  min-width: 60px;
+  margin-right: 10px;
+}
+main.trick-detail .bottom p {
+  font-family: Roboto;
+  margin: 0 20px;
+  text-align: justify;
+}
+main.trick-detail .bottom .informations {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+}
+main.trick-detail .bottom .informations .badge {
+  border-radius: 8px;
+  background-color: #171332;
+  display: flex;
+  flex-direction: column;
+  padding: 5px 20px;
+}
+main.trick-detail .bottom .informations .badge span {
+  color: white;
+  font-size: 16px;
+  font-weight: 300;
+}
+main.trick-detail .bottom .informations .badge span.quiet {
+  color: #a09e9e;
+  font-size: 14px;
+  margin-bottom: 5px;
+  font-weight: 300;
+}
 
 /*# sourceMappingURL=app.css.map */
