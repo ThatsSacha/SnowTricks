@@ -4,22 +4,22 @@ namespace App\Controller;
 
 use App\Entity\Trick;
 use App\Form\TrickType;
-use App\Repository\TrickRepository;
 use App\Service\TrickService;
+use App\Repository\TrickRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/trick')]
 class TrickController extends AbstractController
 {
-    private TrickService $trickService;
+    private $service;
 
-    public function __construct(TrickService $trickService)
+    public function __construct(TrickService $service)
     {
-        $this->trickService = $trickService;
+        $this->service = $service;
     }
 
     #[Route('', name: 'trick_index', methods: ['GET'])]
@@ -31,7 +31,6 @@ class TrickController extends AbstractController
     }
 
     #[Route('/is-authenticated/new', name: 'trick_new', methods: ['GET', 'POST'])]
-    #
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $trick = new Trick();
@@ -39,7 +38,7 @@ class TrickController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->trickService->new($trick, $this->getUser());
+            $this->service->new($trick, $this->getUser());
 
             return $this->redirectToRoute('trick_index', [], Response::HTTP_SEE_OTHER);
         }

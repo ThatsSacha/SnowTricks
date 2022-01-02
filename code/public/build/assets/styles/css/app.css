@@ -235,7 +235,7 @@ form button {
   align-self: flex-end;
 }
 
-input, textarea {
+input, textarea, select {
   border-radius: 8px;
   border: 3px solid transparent;
   padding: 5px;
@@ -243,11 +243,11 @@ input, textarea {
   color: #171332;
   transition: 150ms;
 }
-input:focus, textarea:focus {
+input:focus, textarea:focus, select:focus {
   outline: none;
   border: 3px solid #4ae3b5;
 }
-input::placeholder, textarea::placeholder {
+input::placeholder, textarea::placeholder, select::placeholder {
   font-weight: 300;
   letter-spacing: 1.1px;
 }
@@ -336,7 +336,7 @@ main.trick-detail .bottom .trick-media-list div {
 }
 main.trick-detail .bottom p {
   font-family: Roboto;
-  margin: 0 20px;
+  margin: 30px 20px;
   text-align: justify;
 }
 main.trick-detail .bottom .informations {

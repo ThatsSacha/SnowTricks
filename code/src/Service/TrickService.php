@@ -2,18 +2,22 @@
 
 namespace App\Service;
 
-use App\Entity\Trick;
 use App\Entity\User;
+use App\Entity\Trick;
+use App\Entity\TrickGroup;
+use App\Service\TrickGroupService;
 use App\Repository\TrickRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
 class TrickService {
     private $emi;
     private $repo;
+    private TrickGroupService $trickGroupService;
 
-    public function __construct(TrickRepository $repo, EntityManagerInterface $emi) {
+    public function __construct(TrickRepository $repo, EntityManagerInterface $emi, TrickGroupService $trickGroupService) {
         $this->emi = $emi;
         $this->repo = $repo;
+        $this->trickGroupService = $trickGroupService;
     }
 
     /**
@@ -51,5 +55,9 @@ class TrickService {
         $slug = strtolower($slug);
 
         return $slug;
+    }
+
+    public function getTrickGroups() {
+       return $this->trickGroupService->findAll();
     }
 }
