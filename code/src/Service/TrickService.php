@@ -26,7 +26,7 @@ class TrickService {
         $response = array();
 
         if ($trickData === null) {
-            $slug = $this->setSlug($trick->getSlug());
+            $slug = $this->generateSlug($trick->getName());
 
             $trick->setCreatedAt(date_create())
                 ->setCreatedBy($user)
@@ -46,7 +46,7 @@ class TrickService {
      * 
      * @return string
      */
-    public function setSlug(string $slug): string {
+    public function generateSlug(string $slug): string {
         $slug = str_replace(' ', '-', $slug);
         $slug = strtolower($slug);
 

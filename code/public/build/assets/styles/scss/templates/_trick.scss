@@ -29,6 +29,14 @@ main {
     &.trick-detail {
         padding: 10% 15%;
 
+        span {
+            color: $grey-light;
+            margin-bottom: 10px;
+            font-family: 'Roboto';
+            font-size: 14px;
+            font-weight: 400;
+        }
+
         .img-container {
             background-color: $blue;
             display: flex;
@@ -81,6 +89,11 @@ main {
                     display: flex;
                     flex-direction: column;
                     padding: 5px 20px;
+                    margin-right: 10px;
+
+                    &:last-child {
+                        margin-right: 0;
+                    }
 
                     span {
                         &.quiet {
@@ -94,6 +107,25 @@ main {
                         font-size: 16px;
                         font-weight: 300;
                     }
+                }
+            }
+
+            .add-comment {
+                padding: 25px 10px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                border-top: 1px solid $broken-white;
+                border-bottom: 1px solid $broken-white;
+                margin: 25px 20px;
+            }
+
+            .comments {
+                margin: 10px;
+
+                h2 {
+                    color: $grey;
                 }
             }
         }

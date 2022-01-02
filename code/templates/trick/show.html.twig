@@ -4,6 +4,9 @@
 
 {% block main %}
     <main class="trick-detail">
+        <a href="{{ path('trick_index') }}">
+            <span>&#8592; Retour à la liste</span>
+        </a>
         <div class="img-container">
             <h1>{{ trick.name }}</h1>
         </div>
@@ -33,11 +36,45 @@
                     <span class="quiet">Créé le</span>
                     <span>{{ trick.createdAt | date('d-m-Y') }}</span>
                 </div>
+                <div class="badge">
+                    <span class="quiet">Créé par</span>
+                    <span>{{ trick.createdBy.pseudo }}</span>
+                </div>
+                {% if trick.updatedAt %}
+                    <div class="badge">
+                        <span class="quiet">Modifié le</span>
+                        <span>{{ trick.updatedAt | date('d-m-Y') }}</span>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="add-comment">
+                {% if app.user %}
+                    <form action="{{ path('comment_create') }}" method="post">
+                        <input type="hidden" name="trick" value="{{ trick.id }}">
+                        <textarea name="content" placeholder="Ajouter un commentaire..."></textarea>
+                        <button type="submit">Ajouter un commentaire</button>
+                    </form>
+                {% else %}
+                    <span>
+                        <i class="bi bi-info-circle"></i>
+                        Vous devez être connecté pour ajouter un commentaire
+                    </span>
+                    <p>
+                        <a href="{{ path('app_login') }}">
+                            <button class="green">
+                                <i class="bi bi-person-check"></i>
+                                Me connecter
+                            </button>
+                        </a>
+                    </p>
+                {% endif %}
+            </div>
+            <div class="comments">
+                <h2>Commentaires</h2>
+                <span>Il n'y a aucun commentaire</span>
             </div>
         </div>
         
-
-        <a href="{{ path('trick_index') }}">back to list</a>
 
         <a href="{{ path('trick_edit', {'id': trick.id}) }}">edit</a>
 
