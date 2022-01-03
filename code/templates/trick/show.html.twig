@@ -33,6 +33,10 @@
             </p>
             <div class="informations">
                 <div class="badge">
+                    <span class="quiet">Groupe</span>
+                    <span>{{ trick.trickGroup.name }}</span>
+                </div>
+                <div class="badge">
                     <span class="quiet">Créé le</span>
                     <span>{{ trick.createdAt | date('d-m-Y') }}</span>
                 </div>
@@ -59,14 +63,12 @@
                         <i class="bi bi-info-circle"></i>
                         Vous devez être connecté pour ajouter un commentaire
                     </span>
-                    <p>
-                        <a href="{{ path('app_login') }}">
-                            <button class="green">
-                                <i class="bi bi-person-check"></i>
-                                Me connecter
-                            </button>
-                        </a>
-                    </p>
+                    <a href="{{ path('app_login') }}">
+                        <button class="green">
+                            <i class="bi bi-person-check"></i>
+                            Me connecter
+                        </button>
+                    </a>
                 {% endif %}
             </div>
             <div class="comments">
