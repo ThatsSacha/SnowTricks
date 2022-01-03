@@ -146,6 +146,10 @@ button.green {
 button.green:hover {
   box-shadow: 10px 10px 6px #171332;
 }
+button.small {
+  font-size: 0.8rem;
+  padding: 1% 15px;
+}
 
 .card {
   padding: 20px 25px;
@@ -274,21 +278,33 @@ main.login form a.reset-password {
   font-size: 14px;
 }
 
-main.trick-list .trick-item {
+main.trick-list .title-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+main.trick-list .trick-container {
+  display: flex;
+}
+main.trick-list .trick-container .trick-item {
   border-radius: 8px;
   background-color: white;
   display: flex;
   flex-direction: column;
   width: 250px;
   text-align: center;
+  margin: 10px;
+  height: 200px;
 }
-main.trick-list .trick-item .top, main.trick-list .trick-item .bottom {
+main.trick-list .trick-container .trick-item .top, main.trick-list .trick-container .trick-item .bottom {
   width: 100%;
 }
-main.trick-list .trick-item .top {
+main.trick-list .trick-container .trick-item .top {
   height: 40%;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
-main.trick-list .trick-item .bottom {
+main.trick-list .trick-container .trick-item .bottom {
   height: 60%;
   display: flex;
   flex-direction: column;
@@ -296,7 +312,7 @@ main.trick-list .trick-item .bottom {
   padding: 20px;
 }
 main.trick-detail {
-  padding: 10% 15%;
+  padding: 10%;
 }
 main.trick-detail span {
   color: #a09e9e;

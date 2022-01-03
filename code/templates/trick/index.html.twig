@@ -4,23 +4,32 @@
 
 {% block main %}
     <main class="trick-list">
-        <h1>Les tricks</h1>
-
+        <div class="title-container">
+            <h1>Les tricks</h1>
+            <a href="{{ path('trick_new') }}">
+                <button class="green small">
+                    <i class="bi bi-pen"></i>
+                    Ajouter un trick
+                </button>
+            </a>
+        </div>
         {% if tricks|length > 0 %}
-            {% for trick in tricks %}
-                <div class="trick-item">
-                    <div class="top" style="background: black"></div>
-                    <div class="bottom">
-                        <h2>{{ trick.name }}</h2>
-                        <a href="{{ path('trick_show', {'slug': trick.slug}) }}">
-                            <button>
-                                <i class="bi bi-arrow-return-right"></i>
-                                Voir le trick
-                            </button>
-                        </a>
+            <div class="trick-container">
+                {% for trick in tricks %}
+                    <div class="trick-item">
+                        <div class="top" style="background: black"></div>
+                        <div class="bottom">
+                            <h2>{{ trick.name }}</h2>
+                            <a href="{{ path('trick_show', {'slug': trick.slug}) }}">
+                                <button>
+                                    <i class="bi bi-arrow-return-right"></i>
+                                    Voir le trick
+                                </button>
+                            </a>
+                        </div>
                     </div>
-                </article>
-            {% endfor %}
+                {% endfor %}
+            </div>
         {% endif %}
 
         {% if tricks|length == 0 %}
