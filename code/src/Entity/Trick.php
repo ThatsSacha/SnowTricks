@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\TrickRepository;
 use Symfony\Component\Validator\Constraints\Unique;
@@ -58,6 +60,16 @@ class Trick
      * @ORM\JoinColumn(nullable=false)
      */
     private $trickGroup;
+
+    /**
+     * @ORM\OneToMany(targetEntity=TrickMedia::class, mappedBy="trick", orphanRemoval=true)
+     */
+    private $trickMedia;
+
+    public function __construct()
+    {
+        $this->trickMedia = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -144,6 +156,36 @@ class Trick
     public function setTrickGroup(?TrickGroup $trickGroup): self
     {
         $this->trickGroup = $trickGroup;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|TrickMedia[]
+     */
+    public function getTrickMedia(): Collection
+    {
+        return $this->trickMedia;
+    }
+
+    public function addTrickMedium(TrickMedia $trickMedium): self
+    {
+        if (!$this->trickMedia->contains($trickMedium)) {
+            $this->trickMedia[] = $trickMedium;
+            $trickMedium->setTrick($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTrickMedium(TrickMedia $trickMedium): self
+    {
+        if ($this->trickMedia->removeElement($trickMedium)) {
+            // set the owning side to null (unless already changed)
+            if ($trickMedium->getTrick() === $this) {
+                $trickMedium->setTrick(null);
+            }
+        }
 
         return $this;
     }
