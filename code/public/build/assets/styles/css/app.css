@@ -154,9 +154,14 @@ button.small {
 .card {
   padding: 20px 25px;
   border-radius: 8px;
+  display: flex;
+  flex-direction: column;
 }
 .card.white {
   background-color: white;
+}
+.card.grey {
+  background-color: #eeeeee;
 }
 .card h1 {
   margin-bottom: 20px;
@@ -165,10 +170,52 @@ button.small {
   font-weight: 400;
   font-size: 26px;
 }
+.card span.card-title {
+  color: #7e7d7d;
+  margin-bottom: 20px;
+}
 
 form {
   display: flex;
   flex-direction: column;
+}
+form .btn-toggle-container {
+  display: flex;
+  flex-direction: column;
+}
+form .btn-toggle-container span {
+  font-family: "Roboto";
+  font-size: 12px;
+}
+form .btn-toggle-container .btn-toggle {
+  width: 70px;
+  background: white;
+  border-radius: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  padding: 0 5px;
+  position: relative;
+}
+form .btn-toggle-container .btn-toggle .round {
+  margin-bottom: 0;
+  height: 20px;
+  width: 20px;
+  background-color: grey;
+  border-radius: 100%;
+  left: 5px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: 150ms;
+}
+form .btn-toggle-container .btn-toggle .round.active {
+  background-color: #4ae3b5;
+  left: 45px;
+}
+form .btn-toggle-container .btn-toggle .round input {
+  visibility: hidden;
 }
 form div.error {
   background: #e34a4acc;
@@ -254,6 +301,9 @@ input:focus, textarea:focus, select:focus {
 input::placeholder, textarea::placeholder, select::placeholder {
   font-weight: 300;
   letter-spacing: 1.1px;
+}
+input.white, textarea.white, select.white {
+  background-color: white;
 }
 
 input {

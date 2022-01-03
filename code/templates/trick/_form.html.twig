@@ -1,4 +1,15 @@
 {{ form_start(form) }}
     {{ form_widget(form) }}
+    <div class="card grey">
+        <span class="card-title">Ajout média</span>
+        <div class="btn-toggle-container">
+            <span>Est-ce une image ?</span>
+            <div class="btn-toggle">
+                <div class="round">
+                    <input type="checkbox" name="isImg" value="1">
+                </div>
+            </div>
+        </div>
+    </div>
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
