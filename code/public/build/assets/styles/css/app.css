@@ -185,7 +185,8 @@ form .btn-toggle-container {
 }
 form .btn-toggle-container span {
   font-family: "Roboto";
-  font-size: 12px;
+  font-size: 14px;
+  margin-bottom: 5px;
 }
 form .btn-toggle-container .btn-toggle {
   width: 70px;
@@ -450,6 +451,15 @@ main.trick-detail .bottom .comments {
 }
 main.trick-detail .bottom .comments h2 {
   color: #7e7d7d;
+}
+main.new-trick form .card {
+  margin-bottom: 20px;
+}
+main.new-trick form .card div.textarea, main.new-trick form .card div.url {
+  display: none;
+}
+main.new-trick form .card div.textarea.is-active, main.new-trick form .card div.url.is-active {
+  display: flex;
 }
 
 /*# sourceMappingURL=app.css.map */

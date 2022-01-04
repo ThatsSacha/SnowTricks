@@ -25,6 +25,7 @@ class TrickService {
      * @param User $user
      */
     public function new(Trick $trick, User $user) {
+        dd($trick);
         $name = $trick->getName();
         $trickData = $this->repo->findOneBy(array('name' => $name));
         $response = array();

@@ -145,4 +145,22 @@ main {
             }
         }
     }
+
+    &.new-trick {
+        form {
+            .card {
+                margin-bottom: 20px;
+
+                div {
+                    &.textarea, &.url {
+                        display: none;
+
+                        &.is-active {
+                            display: flex;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

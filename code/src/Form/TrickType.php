@@ -3,14 +3,15 @@
 namespace App\Form;
 
 use App\Entity\Trick;
+use App\Form\TrickMediaType;
 use App\Service\TrickService;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class TrickType extends AbstractType
 {
@@ -46,6 +47,10 @@ class TrickType extends AbstractType
             ->add('trickGroup', ChoiceType::class, [
                 'label' => 'Groupe de figure *',
                 'choices' => $trickChoices
+            ])
+            ->add('trickMedia', CollectionType::class, [
+                'label' => false,
+                'entry_type' => TrickMediaType::class
             ])
         ;
     }
