@@ -473,6 +473,9 @@ main.trick-detail .bottom .comments {
 main.trick-detail .bottom .comments h2 {
   color: #7e7d7d;
 }
+main.new-trick {
+  padding-bottom: 1vh;
+}
 main.new-trick form .card {
   margin-bottom: 20px;
 }

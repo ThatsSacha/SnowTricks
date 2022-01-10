@@ -23,5 +23,8 @@
         <i class="bi bi-plus"></i>
         Ajouter un média
     </button>
-    <button class="btn save">{{ button_label|default('Save') }}</button>
+    <button class="btn save">
+        <i class="bi bi-plus"></i>
+        {{ button_label|default('Ajouter le trick') }}
+    </button>
 {{ form_end(form) }}
