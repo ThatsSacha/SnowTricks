@@ -12,6 +12,17 @@
                 <div class="img-container" style="background-image: url({{ trickMedia.url }})">
                     <h1>{{ trick.name }}</h1>
                     <div class="filter"></div>
+                    {% if app.user %}
+                        <div class="block-action">
+                            <a href="{{ path('trick_edit', {'id': trick.id}) }}">
+                                <button class="small green no-hover">
+                                    <i class="bi bi-pen"></i>
+                                    Éditer
+                                </button>
+                            </a>
+                            {{ include('trick/_delete_form.html.twig') }}
+                        </div>
+                    {% endif %}
                 </div>
             {% endif %}
         {% endfor %}
@@ -50,7 +61,7 @@
             </div>
             <div class="add-comment">
                 {% if app.user %}
-                    <form action="{{ path('comment_create') }}" method="post">
+                    <form {#action="{{ path('comment_create') }}"#} method="post">
                         <input type="hidden" name="trick" value="{{ trick.id }}">
                         <textarea name="content" placeholder="Ajouter un commentaire..."></textarea>
                         <button type="submit">Ajouter un commentaire</button>
@@ -73,11 +84,5 @@
                 <span>Il n'y a aucun commentaire</span>
             </div>
         </div>
-        
-
-        <!--<a href="{{ path('trick_edit', {'id': trick.id}) }}">edit</a>-->
-        {#
-        {{ include('trick/_delete_form.html.twig') }}
-        #}
     </main>
 {% endblock %}

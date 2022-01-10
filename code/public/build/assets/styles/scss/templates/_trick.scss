@@ -80,6 +80,20 @@ main {
                 z-index: 0;
                 backdrop-filter: blur(2px);
             }
+
+            .block-action {
+                z-index: 1;
+                position: absolute;
+                top: 5px;
+                right: 5px;
+                display: flex;
+
+                button {
+                    &:first-child {
+                        margin-right: 5px;
+                    }
+                }
+            }
         }
 
         .bottom {

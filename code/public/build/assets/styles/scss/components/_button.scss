@@ -29,8 +29,19 @@ button {
         }
     }
 
+    &.red {
+        background-color: $red;
+    }
+
     &.small {
         font-size: 0.8rem;
         padding: 1% 15px;
+    }
+
+    &.no-hover {
+        &:hover {
+            box-shadow: none;
+            transform: none;
+        }
     }
 }

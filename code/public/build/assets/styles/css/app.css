@@ -147,9 +147,16 @@ button.green {
 button.green:hover {
   box-shadow: 10px 10px 6px #171332;
 }
+button.red {
+  background-color: #e34a4a;
+}
 button.small {
   font-size: 0.8rem;
   padding: 1% 15px;
+}
+button.no-hover:hover {
+  box-shadow: none;
+  transform: none;
 }
 
 .card {
@@ -400,6 +407,16 @@ main.trick-detail .img-container .filter {
   background: #9b9b9b4f;
   z-index: 0;
   backdrop-filter: blur(2px);
+}
+main.trick-detail .img-container .block-action {
+  z-index: 1;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  display: flex;
+}
+main.trick-detail .img-container .block-action button:first-child {
+  margin-right: 5px;
 }
 main.trick-detail .bottom {
   background-color: white;
