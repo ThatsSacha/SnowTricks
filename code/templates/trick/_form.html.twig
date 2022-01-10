@@ -1,12 +1,14 @@
 {{ form_start(form) }}
     <div>
         <div>
+            {{ form_errors(form.name) }}
             {{ form_label(form.name) }}
             {{ form_widget(form.name) }}
         </div>
     </div>
     <div>
         <div>
+            {{ form_errors(form.description) }}
             {{ form_label(form.description) }}
             {{ form_widget(form.description) }}
         </div>
@@ -17,10 +19,14 @@
             {{ form_widget(form.trickGroup) }}
         </div>
     </div>
+    {{ form_widget(form._token) }}
     {% if trick.name %}
         {% for i, child in form.children.trickMedia %}
             <div class="card grey">
-                <span class="card-title">Ajout média</span>
+                <span class="card-title">
+                    Ajout média
+                    <i class="bi bi-x-circle remove-media"></i>
+                </span>
                 <div class="btn-toggle-container">
                     {% if child.vars.value.isImg %}
                         <span>Est-ce une image ?</span>
@@ -52,7 +58,10 @@
         {% endfor %}
         {% else %}
         <div class="card grey">
-            <span class="card-title">Ajout média</span>
+            <span class="card-title">
+                Ajout média
+                <i class="bi bi-x-circle remove-media"></i>
+            </span>
             <div class="btn-toggle-container">
                 <span>Est-ce une image ?</span>
                 <div class="btn-toggle">

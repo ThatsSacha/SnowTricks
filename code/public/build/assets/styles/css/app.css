@@ -181,6 +181,12 @@ button.no-hover:hover {
 .card span.card-title {
   color: #7e7d7d;
   margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.card span.card-title i {
+  cursor: pointer;
 }
 
 form {
