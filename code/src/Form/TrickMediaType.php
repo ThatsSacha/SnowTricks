@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\TrickMedia;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -15,7 +16,7 @@ class TrickMediaType extends AbstractType
             ->add('url')
             ->add('isImg')
             ->add('embed')
-            ->add('trick')
+            ->add('trick', HiddenType::class)
         ;
     }
 

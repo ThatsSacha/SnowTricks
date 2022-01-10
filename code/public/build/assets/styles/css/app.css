@@ -10,6 +10,7 @@ header {
   align-items: center;
   padding: 10px 10%;
   justify-content: space-between;
+  z-index: 10;
 }
 header a.logo {
   color: #4ae3b5;
@@ -460,6 +461,9 @@ main.new-trick form .card div.textarea, main.new-trick form .card div.url {
 }
 main.new-trick form .card div.textarea.is-active, main.new-trick form .card div.url.is-active {
   display: flex;
+}
+main.new-trick form button.add-media {
+  align-self: flex-start;
 }
 
 /*# sourceMappingURL=app.css.map */

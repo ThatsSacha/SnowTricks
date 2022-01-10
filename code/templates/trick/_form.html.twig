@@ -6,18 +6,22 @@
             <span>Est-ce une image ?</span>
             <div class="btn-toggle">
                 <div class="round">
-                    <input type="hidden" name="form[trickMedia][0][isImg]" value="0">
+                    <input type="hidden" name="trick[trickMedia][0][isImg]" value="0">
                 </div>
             </div>
         </div>
         <div class="textarea is-active">
             <label for="embed">Code embed</label>
-            <textarea id="embed" class="white" name="form[trickMedia][0][embed]" placeholder='Ex: <iframe width="560" height="315" src="https://www.youtube.com/embed/monyw0mnLZg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'></textarea>
+            <textarea id="embed" class="white" name="trick[trickMedia][0][embed]" placeholder='Ex: <iframe width="560" height="315" src="https://www.youtube.com/embed/monyw0mnLZg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'></textarea>
         </div>
         <div class="url">
             <label for="url">URL de l'image</label>
-            <input type="url" id="url" class="white" name="form[trickMedia][0][url]" placeholder="Ex: https://img.redbull.com/images">
+            <input type="url" id="url" class="white" name="trick[trickMedia][0][url]" placeholder="Ex: https://img.redbull.com/images">
         </div>
     </div>
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    <button class="add-media small">
+        <i class="bi bi-plus"></i>
+        Ajouter un média
+    </button>
+    <button class="btn save">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

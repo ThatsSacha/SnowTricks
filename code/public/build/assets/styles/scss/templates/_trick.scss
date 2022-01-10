@@ -161,6 +161,12 @@ main {
                     }
                 }
             }
+
+            button {
+                &.add-media {
+                    align-self: flex-start;
+                }
+            }
         }
     }
 }

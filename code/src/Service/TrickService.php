@@ -25,7 +25,12 @@ class TrickService {
      * @param User $user
      */
     public function new(Trick $trick, User $user) {
-        dd($trick);
+        foreach ($trick->getTrickMedia() as $trickMedia) {
+            //dd($trickMedia);
+            //$trickMedia->setIsImg((int) $trickMedia->getIsImg());
+            $this->emi->persist($trickMedia);
+        }
+        
         $name = $trick->getName();
         $trickData = $this->repo->findOneBy(array('name' => $name));
         $response = array();
