@@ -26,8 +26,6 @@ class TrickService {
      */
     public function new(Trick $trick, User $user) {
         foreach ($trick->getTrickMedia() as $trickMedia) {
-            dd($trickMedia);
-            //$trickMedia->setIsImg((int) $trickMedia->getIsImg());
             $this->emi->persist($trickMedia);
         }
         

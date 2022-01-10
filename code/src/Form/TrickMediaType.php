@@ -15,7 +15,7 @@ class TrickMediaType extends AbstractType
     {
         $builder
             ->add('url')
-            ->add('isImg', HiddenType::class)
+            ->add('isImg', TextType::class)
             ->add('embed')
             ->add('trick', HiddenType::class)
         ;
