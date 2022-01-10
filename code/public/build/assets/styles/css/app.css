@@ -355,6 +355,8 @@ main.trick-list .trick-container .trick-item .top {
   height: 40%;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
+  background-position: center;
+  background-size: cover;
 }
 main.trick-list .trick-container .trick-item .bottom {
   height: 60%;
@@ -381,10 +383,23 @@ main.trick-detail .img-container {
   border-top-right-radius: 8px;
   border-top-left-radius: 8px;
   height: 400px;
+  background-position: center;
+  background-size: cover;
+  position: relative;
 }
 main.trick-detail .img-container h1 {
   font-size: 52px;
   color: white;
+  z-index: 1;
+  text-shadow: 0 0 21px #00000061;
+}
+main.trick-detail .img-container .filter {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: #9b9b9b4f;
+  z-index: 0;
+  backdrop-filter: blur(2px);
 }
 main.trick-detail .bottom {
   background-color: white;
@@ -400,6 +415,11 @@ main.trick-detail .bottom .trick-media-list div {
   background-color: #171332;
   height: 60px;
   min-width: 60px;
+  margin-right: 10px;
+}
+main.trick-detail .bottom .trick-media-list img, main.trick-detail .bottom .trick-media-list iframe {
+  height: 150px;
+  max-width: 200px;
   margin-right: 10px;
 }
 main.trick-detail .bottom p {

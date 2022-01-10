@@ -3,12 +3,12 @@ $(function() {
         $(this).toggleClass('active');
         
         // Is not an image
-        if ($(this).children('input').val() == '0') {
-            $(this).children('input').val('1');
+        if ($(this).children('input').val() == 'false') {
+            $(this).children('input').val('true');
             $(this).parent().parent().parent().children('.textarea').removeClass('is-active');
             $(this).parent().parent().parent().children('.url').addClass('is-active');
         } else {
-            $(this).children('input').val('0');
+            $(this).children('input').val('false');
             $(this).parent().parent().parent().children('.textarea').addClass('is-active');
             $(this).parent().parent().parent().children('.url').removeClass('is-active');
         }

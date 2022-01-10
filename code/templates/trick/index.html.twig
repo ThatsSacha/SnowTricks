@@ -17,7 +17,11 @@
             <div class="trick-container">
                 {% for trick in tricks %}
                     <div class="trick-item">
-                        <div class="top" style="background: black"></div>
+                        {% for trickMedia in trick.trickMedia %}
+                            {% if trickMedia.isImg %}
+                                <div class="top" style="background-image: url({{ trickMedia.url }})"></div>
+                            {% endif %}
+                        {% endfor %}
                         <div class="bottom">
                             <h2>{{ trick.name }}</h2>
                             <a href="{{ path('trick_show', {'slug': trick.slug}) }}">

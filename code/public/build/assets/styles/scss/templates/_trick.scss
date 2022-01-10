@@ -27,6 +27,8 @@ main {
                     height: 40%;
                     border-top-left-radius: $border-radius;
                     border-top-right-radius: $border-radius;
+                    background-position: center;
+                    background-size: cover;
                 }
     
                 .bottom {
@@ -59,10 +61,24 @@ main {
             border-top-right-radius: $border-radius;
             border-top-left-radius: $border-radius;
             height: 400px;
+            background-position: center;
+            background-size: cover;
+            position: relative;
 
             h1 {
                 font-size: 52px;
                 color: white;
+                z-index: 1;
+                text-shadow: 0 0 21px #00000061;
+            }
+
+            .filter {
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                background: #9b9b9b4f;
+                z-index: 0;
+                backdrop-filter: blur(2px);
             }
         }
 
@@ -80,6 +96,12 @@ main {
                     background-color: $blue;
                     height: 60px;
                     min-width: 60px;
+                    margin-right: 10px;
+                }
+
+                img, iframe {
+                    height: 150px;
+                    max-width: 200px;
                     margin-right: 10px;
                 }
             }

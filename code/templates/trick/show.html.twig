@@ -7,26 +7,23 @@
         <a href="{{ path('trick_index') }}">
             <span>&#8592; Retour à la liste</span>
         </a>
-        <div class="img-container">
-            <h1>{{ trick.name }}</h1>
-        </div>
+        {% for trickMedia in trick.trickMedia %}
+            {% if trickMedia.isImg %}
+                <div class="img-container" style="background-image: url({{ trickMedia.url }})">
+                    <h1>{{ trick.name }}</h1>
+                    <div class="filter"></div>
+                </div>
+            {% endif %}
+        {% endfor %}
         <div class="bottom">
             <div class="trick-media-list">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
+            {% for trickMedia in trick.trickMedia %}
+                {% if trickMedia.isImg %}
+                    <img src="{{ trickMedia.url }}" loading="lazy">
+                    {% else %}
+                    {{ trickMedia.embed | raw }}
+                {% endif %}
+            {% endfor %}
             </div>
             <p>
                 {{ trick.description }}
