@@ -25,7 +25,9 @@
             <div class="card grey">
                 <span class="card-title">
                     Ajout média
-                    <i class="bi bi-x-circle remove-media"></i>
+                    <a href="{{ path('trick_media_delete', {'id': child.vars.value.id, _token: csrf_token('delete' ~ child.vars.value.id)}) }}" onclick="return confirm('Es-tu sur de vouloir supprimer ce media ?');">
+                        <i class="bi bi-x-circle"></i>
+                    </a>
                 </span>
                 <div class="btn-toggle-container">
                     {% if child.vars.value.isImg %}

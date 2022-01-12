@@ -7,8 +7,9 @@
         <a href="{{ path('trick_index') }}">
             <span>&#8592; Retour à la liste</span>
         </a>
+        {% set continue = true %}
         {% for trickMedia in trick.trickMedia %}
-            {% if trickMedia.isImg %}
+            {% if trickMedia.isImg and continue %}
                 <div class="img-container" style="background-image: url({{ trickMedia.url }})">
                     <h1>{{ trick.name }}</h1>
                     <div class="filter"></div>
@@ -24,6 +25,7 @@
                         </div>
                     {% endif %}
                 </div>
+                {% set continue = false %}
             {% endif %}
         {% endfor %}
         <div class="bottom">
