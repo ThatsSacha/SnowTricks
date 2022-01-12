@@ -28,6 +28,17 @@
                 {% set continue = false %}
             {% endif %}
         {% endfor %}
+        {% if trick.trickMedia|length == 0 and app.user %}
+            <div class="block-action">
+                <a href="{{ path('trick_edit', {'id': trick.id}) }}">
+                    <button class="small green no-hover">
+                        <i class="bi bi-pen"></i>
+                        Éditer
+                    </button>
+                </a>
+                {{ include('trick/_delete_form.html.twig') }}
+            </div>
+        {% endif %}
         <div class="bottom">
             <div class="trick-media-list">
             {% for trickMedia in trick.trickMedia %}
