@@ -4,7 +4,7 @@
 
 {% block main %}
     <main class="trick-detail">
-        <a href="{{ path('trick_index') }}">
+        <a href="{{ path('trick_index') }}" class="link-back">
             <span>&#8592; Retour à la liste</span>
         </a>
         {% set continue = true %}
@@ -74,11 +74,12 @@
             </div>
             <div class="add-comment">
                 {% if app.user %}
-                    <form {#action="{{ path('comment_create') }}"#} method="post">
-                        <input type="hidden" name="trick" value="{{ trick.id }}">
-                        <textarea name="content" placeholder="Ajouter un commentaire..."></textarea>
-                        <button type="submit">Ajouter un commentaire</button>
-                    </form>
+                    <a href="{{ path('comment_new', { 'slug': trick.slug }) }}">
+                        <button class="small broken-white">
+                            <i class="bi bi-chat-text"></i>
+                            Ajouter un commentaire
+                        </button>
+                    </a>
                 {% else %}
                     <span>
                         <i class="bi bi-info-circle"></i>
@@ -94,7 +95,20 @@
             </div>
             <div class="comments">
                 <h2>Commentaires</h2>
-                <span>Il n'y a aucun commentaire</span>
+                {% if trick.comments|length == 0 %}
+                    <span>Il n'y a aucun commentaire</span>
+                {% else %}
+                    {% for comment in trick.comments %}
+                        <div class="card grey">
+                            <div class="card-title">
+                                <img src="/img/users/{{ comment.user.cover }}" alt="{{ comment.user.pseudo }}">
+                                <span>{{ comment.user.pseudo }}</span>
+                                <span>, {{ comment.createdAt | date('d/m/Y à H:i:s') }}</span>
+                            </div>
+                            <p>{{ comment.content }}</p>
+                        </div>
+                    {% endfor %}
+                {% endif %}
             </div>
         </div>
     </main>

@@ -29,6 +29,19 @@ button {
         }
     }
 
+    &.broken-white {
+        background-color: $broken-white;
+        color: $blue;
+
+        i {
+            color: $blue;
+        }
+
+        &:hover {
+            box-shadow: 10px 10px 6px $blue;
+        }
+    }
+
     &.red {
         background-color: $red;
     }

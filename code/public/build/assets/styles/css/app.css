@@ -67,6 +67,13 @@ html body main {
   display: flex;
   flex-direction: column;
 }
+html body main a.link-back span {
+  color: #a09e9e;
+  margin-bottom: 10px;
+  font-family: "Roboto";
+  font-size: 14px;
+  font-weight: 400;
+}
 html body main h1 {
   color: #171332;
   font-size: 42px;
@@ -145,6 +152,16 @@ button.green {
   background-color: #4ae3b5;
 }
 button.green:hover {
+  box-shadow: 10px 10px 6px #171332;
+}
+button.broken-white {
+  background-color: #eeeeee;
+  color: #171332;
+}
+button.broken-white i {
+  color: #171332;
+}
+button.broken-white:hover {
   box-shadow: 10px 10px 6px #171332;
 }
 button.red {
@@ -381,13 +398,6 @@ main.trick-list .trick-container .trick-item .bottom {
 main.trick-detail {
   padding: 10%;
 }
-main.trick-detail span {
-  color: #a09e9e;
-  margin-bottom: 10px;
-  font-family: "Roboto";
-  font-size: 14px;
-  font-weight: 400;
-}
 main.trick-detail .img-container {
   background-color: #171332;
   display: flex;
@@ -495,6 +505,19 @@ main.trick-detail .bottom .comments {
 }
 main.trick-detail .bottom .comments h2 {
   color: #7e7d7d;
+}
+main.trick-detail .bottom .comments .card {
+  margin-bottom: 10px;
+}
+main.trick-detail .bottom .comments .card .card-title {
+  display: flex;
+  align-items: center;
+}
+main.trick-detail .bottom .comments .card .card-title img {
+  height: 40px;
+  max-width: 40px;
+  border-radius: 100%;
+  margin-right: 10px;
 }
 main.new-trick {
   padding-bottom: 1vh;

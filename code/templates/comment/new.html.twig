@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau commentaire{% endblock %}
+
+{% block main %}
+    <main>
+        <a href="{{ path('trick_show', { slug: 'trick-test' }) }}" class="link-back">
+            <span>&#8592; Retour au trick</span>
+        </a>
+        <div class="card white">
+            <h1>Nouveau commentaire</h1>
+
+            {{ include('comment/_form.html.twig') }}
+        </div>
+    </main>
+{% endblock %}

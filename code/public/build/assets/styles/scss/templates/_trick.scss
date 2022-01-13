@@ -45,14 +45,6 @@ main {
     &.trick-detail {
         padding: 10%;
 
-        span {
-            color: $grey-light;
-            margin-bottom: 10px;
-            font-family: 'Roboto';
-            font-size: 14px;
-            font-weight: 400;
-        }
-
         .img-container {
             background-color: $blue;
             display: flex;
@@ -177,6 +169,22 @@ main {
 
                 h2 {
                     color: $grey;
+                }
+
+                .card {
+                    margin-bottom: 10px;
+
+                    .card-title {
+                        display: flex;
+                        align-items: center;
+
+                        img {
+                            height: 40px;
+                            max-width: 40px;
+                            border-radius: 100%;
+                            margin-right: 10px;
+                        }
+                    }
                 }
             }
         }

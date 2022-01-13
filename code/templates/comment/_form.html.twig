@@ -1,0 +1,7 @@
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button class="btn">
+        <i class="bi bi-chat-text"></i>
+        {{ button_label|default('Commenter') }}
+    </button>
+{{ form_end(form) }}

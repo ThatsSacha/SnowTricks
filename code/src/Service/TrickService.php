@@ -64,4 +64,8 @@ class TrickService {
     public function getTrickGroups() {
        return $this->trickGroupService->findAll();
     }
+
+    public function findOneBySlug(string $slug) {
+        return $this->repo->findOneBy(array('slug' => $slug));
+    }
 }
