@@ -74,6 +74,11 @@ html body main a.link-back span {
   font-size: 14px;
   font-weight: 400;
 }
+html body main .title-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 html body main h1 {
   color: #171332;
   font-size: 42px;
@@ -360,11 +365,6 @@ main.login form a.reset-password {
   font-size: 14px;
 }
 
-main.trick-list .title-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
 main.trick-list .trick-container {
   display: flex;
 }

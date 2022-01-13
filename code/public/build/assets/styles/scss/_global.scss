@@ -28,6 +28,12 @@ html {
                 }
             }
 
+            .title-container {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
             h1 {
                 color: $blue;
                 font-size: 42px;
