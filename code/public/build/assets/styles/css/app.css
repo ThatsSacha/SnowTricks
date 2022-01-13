@@ -500,6 +500,13 @@ main.trick-detail .bottom .add-comment {
   border-bottom: 1px solid #eeeeee;
   margin: 25px 20px;
 }
+main.trick-detail .bottom .add-comment span {
+  color: #a09e9e;
+  margin-bottom: 10px;
+  font-family: "Roboto";
+  font-size: 14px;
+  font-weight: 400;
+}
 main.trick-detail .bottom .comments {
   margin: 10px;
 }

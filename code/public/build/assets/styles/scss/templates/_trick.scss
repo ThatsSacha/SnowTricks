@@ -156,6 +156,14 @@ main {
                 border-top: 1px solid $broken-white;
                 border-bottom: 1px solid $broken-white;
                 margin: 25px 20px;
+                
+                span {
+                    color: $grey-light;
+                    margin-bottom: 10px;
+                    font-family: 'Roboto';
+                    font-size: 14px;
+                    font-weight: 400;
+                }
             }
 
             .comments {
