@@ -57,6 +57,15 @@ class TrickController extends AbstractController
         ]);
     }
 
+    #[Route('/{slug}/{numberComments}', name: 'trick_show_comments', methods: ['GET'])]
+    public function showWithComments(Trick $trick, int $numberComments): Response
+    {
+        return $this->render('trick/show.html.twig', [
+            'trick' => $trick,
+            'numberComments' => $numberComments
+        ]);
+    }
+
     #[Route('/{id}/edit', name: 'trick_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Trick $trick, EntityManagerInterface $entityManager): Response
     {

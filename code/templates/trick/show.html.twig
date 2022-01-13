@@ -98,17 +98,37 @@
                 {% if trick.comments|length == 0 %}
                     <span>Il n'y a aucun commentaire</span>
                 {% else %}
-                    {% for comment in trick.comments %}
-                        <div class="card grey">
-                            <div class="card-title">
-                                <img src="/img/users/{{ comment.user.cover }}" alt="{{ comment.user.pseudo }}">
-                                <span>{{ comment.user.pseudo }}</span>
-                                <span>, {{ comment.createdAt | date('d/m/Y à H:i:s') }}</span>
+                    {% set render = true %}
+                    {% for i, comment in trick.comments %}
+                        {% if numberComments is defined and numberComments == i %}
+                            {% set render = false %}
+                        {% elseif numberComments is not defined and i == 5 %}
+                            {% set render = false %}
+                        {% endif %}
+                        {% if render %}
+                            <div class="card grey">
+                                <div class="card-title">
+                                    <img src="/img/users/{{ comment.user.cover }}" alt="{{ comment.user.pseudo }}">
+                                    <span>{{ comment.user.pseudo }}</span>
+                                    <span>, {{ comment.createdAt | date('d/m/Y à H:i:s') }}</span>
+                                </div>
+                                <p>{{ comment.content }}</p>
                             </div>
-                            <p>{{ comment.content }}</p>
-                        </div>
+                        {% endif %}
                     {% endfor %}
                 {% endif %}
+                {% set newNumberComments = 0 %}
+                {% if numberComments is defined %}
+                    {% set newNumberComments = numberComments + 10 %}
+                    {% else %}
+                    {% set newNumberComments = 10 %}
+                {% endif %}
+                <a href="{{ path('trick_show_comments', { slug: trick.slug, numberComments: newNumberComments }) }}">
+                    <button class="small blue" id="load-more">
+                        <i class="bi bi-plus"></i>
+                        Voir plus de commentaires
+                    </button>
+                </a>
             </div>
         </div>
     </main>
