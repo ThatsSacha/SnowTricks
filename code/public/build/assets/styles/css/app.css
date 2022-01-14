@@ -103,6 +103,36 @@ html body main a {
 html body main a:hover {
   text-decoration: underline;
 }
+html body main .trick-container {
+  display: flex;
+}
+html body main .trick-container .trick-item {
+  border-radius: 8px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  text-align: center;
+  margin: 10px;
+  height: 200px;
+}
+html body main .trick-container .trick-item .top, html body main .trick-container .trick-item .bottom {
+  width: 100%;
+}
+html body main .trick-container .trick-item .top {
+  height: 40%;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  background-position: center;
+  background-size: cover;
+}
+html body main .trick-container .trick-item .bottom {
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+}
 
 main.index {
   display: flex;
@@ -110,7 +140,17 @@ main.index {
   justify-content: center;
   align-items: center;
 }
-main.index h1 {
+main.index section {
+  width: 100%;
+}
+main.index section.top {
+  height: 95vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+main.index section.top h1 {
   font-size: 70px;
   text-transform: uppercase;
   color: #171332;
@@ -120,15 +160,30 @@ main.index h1 {
   margin-bottom: 50px;
   text-shadow: 7px 7px 1px #4ae3b59e;
 }
-main.index svg {
+main.index section.top svg {
   height: 250px;
 }
-main.index button {
+main.index section.top button {
   margin-top: 50px;
   box-shadow: 15px 10px 3px #4ae3b5;
+  width: 300px;
+  height: 45px;
 }
-main.index button:hover {
+main.index section.top button:hover {
   box-shadow: 20px 15px 6px #4ae3b5;
+}
+main.index section.trick-container {
+  padding-bottom: 5vh;
+}
+main.index section.trick-container .trick-item.big-height {
+  height: 300px;
+}
+main.index section.trick-container .trick-item .block-action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 50%;
+  align-self: center;
 }
 
 button {
@@ -365,36 +420,6 @@ main.login form a.reset-password {
   font-size: 14px;
 }
 
-main.trick-list .trick-container {
-  display: flex;
-}
-main.trick-list .trick-container .trick-item {
-  border-radius: 8px;
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  width: 250px;
-  text-align: center;
-  margin: 10px;
-  height: 200px;
-}
-main.trick-list .trick-container .trick-item .top, main.trick-list .trick-container .trick-item .bottom {
-  width: 100%;
-}
-main.trick-list .trick-container .trick-item .top {
-  height: 40%;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-  background-position: center;
-  background-size: cover;
-}
-main.trick-list .trick-container .trick-item .bottom {
-  height: 60%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 20px;
-}
 main.trick-detail {
   padding: 10%;
 }

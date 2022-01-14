@@ -7,6 +7,7 @@ use App\Entity\Comment;
 use App\Entity\TrickGroup;
 use App\Entity\TrickMedia;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\OrderBy;
 use App\Repository\TrickRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;

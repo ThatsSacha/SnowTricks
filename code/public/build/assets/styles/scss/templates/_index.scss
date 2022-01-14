@@ -5,27 +5,59 @@ main {
         justify-content: center;
         align-items: center;
 
-        h1 {
-            font-size: 70px;
-            text-transform: uppercase;
-            color: #171332;
-            font-weight: 900;
-            letter-spacing: 2px;
-            text-align: center;
-            margin-bottom: 50px;
-            text-shadow: 7px 7px 1px #4ae3b59e;
-        }
+        section {
+            width: 100%;
 
-        svg {
-            height: 250px;
-        }
+            &.top {
+                height: 95vh;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
 
-        button {
-            margin-top: 50px;
-            box-shadow: 15px 10px 3px $green;
+                h1 {
+                    font-size: 70px;
+                    text-transform: uppercase;
+                    color: #171332;
+                    font-weight: 900;
+                    letter-spacing: 2px;
+                    text-align: center;
+                    margin-bottom: 50px;
+                    text-shadow: 7px 7px 1px #4ae3b59e;
+                }
+        
+                svg {
+                    height: 250px;
+                }
+        
+                button {
+                    margin-top: 50px;
+                    box-shadow: 15px 10px 3px $green;
+                    width: 300px;
+                    height: 45px;
+        
+                    &:hover {
+                        box-shadow: 20px 15px 6px $green;
+                    }
+                }
+            }
 
-            &:hover {
-                box-shadow: 20px 15px 6px $green;
+            &.trick-container {
+                padding-bottom: 5vh;
+
+                .trick-item {
+                    &.big-height {
+                        height: 300px;
+                    }
+
+                    .block-action {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        width: 50%;
+                        align-self: center;
+                    }
+                }
             }
         }
     }

@@ -22,6 +22,25 @@ class TrickController extends AbstractController
         $this->service = $service;
     }
 
+    #[Route('/{id}/edit', name: 'trick_edit', methods: ['GET', 'POST'], requirements: ['id' => '\d+'])]
+    public function edit(Request $request, Trick $trick, EntityManagerInterface $entityManager): Response
+    {
+        $form = $this->createForm(TrickType::class, $trick);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->service->edit($trick);
+            //$entityManager->flush();
+
+            return $this->redirectToRoute('trick_index', [], Response::HTTP_SEE_OTHER);
+        }
+        
+        return $this->renderForm('trick/edit.html.twig', [
+            'trick' => $trick,
+            'form' => $form,
+        ]);
+    }
+
     #[Route('', name: 'trick_index', methods: ['GET'])]
     public function index(TrickRepository $trickRepository): Response
     {
@@ -63,24 +82,6 @@ class TrickController extends AbstractController
         return $this->render('trick/show.html.twig', [
             'trick' => $trick,
             'numberComments' => $numberComments
-        ]);
-    }
-
-    #[Route('/{id}/edit', name: 'trick_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Trick $trick, EntityManagerInterface $entityManager): Response
-    {
-        $form = $this->createForm(TrickType::class, $trick);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
-
-            return $this->redirectToRoute('trick_index', [], Response::HTTP_SEE_OTHER);
-        }
-        
-        return $this->renderForm('trick/edit.html.twig', [
-            'trick' => $trick,
-            'form' => $form,
         ]);
     }
 

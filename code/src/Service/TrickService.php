@@ -20,6 +20,17 @@ class TrickService {
         $this->trickGroupService = $trickGroupService;
     }
 
+    public function edit(Trick $trick) {
+        foreach ($trick->getTrickMedia() as $trickMedia) {
+            if ($trickMedia->getId() === null) {
+                $this->emi->persist($trickMedia);
+            }
+        }
+
+        $this->emi->persist($trick);
+        $this->emi->flush();
+    }
+
     /**
      * @param Trick $trick
      * @param User $user

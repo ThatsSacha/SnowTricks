@@ -15,10 +15,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class TrickMediaController extends AbstractController
 {
 
-    #[Route('/{id}', name: 'trick_media_delete', methods: ['GET'])]
+    #[Route('/{id}/{_token}', name: 'trick_media_delete', methods: ['GET'], requirements: ['id' => '\d+'])]
     public function delete(Request $request, TrickMedia $trickMedia, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$trickMedia->getId(), $request->query->get('_token'))) {
+        //dd('here', $request);
+        if ($this->isCsrfTokenValid('delete'.$trickMedia->getId(), $request->attributes->get('_token'))) {
             $entityManager->remove($trickMedia);
             $entityManager->flush();
         }
