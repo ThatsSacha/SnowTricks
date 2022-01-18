@@ -214,6 +214,16 @@ html body main .trick-container .trick-item .bottom {
   html body main {
     padding: 8vh 5% 0 5%;
   }
+  html body main .title-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  html body main .trick-container .trick-item {
+    width: 100%;
+  }
+  html body main .trick-container .trick-item .bottom a button {
+    width: 100%;
+  }
 }
 main.index {
   display: flex;
@@ -569,6 +579,9 @@ main.trick-detail .bottom .trick-media-list img, main.trick-detail .bottom .tric
   max-width: 200px !important;
   margin-right: 10px !important;
 }
+main.trick-detail .bottom button.show-media {
+  display: none;
+}
 main.trick-detail .bottom p {
   font-family: Roboto;
   margin: 30px 20px;
@@ -620,6 +633,7 @@ main.trick-detail .bottom .add-comment span {
   font-family: "Roboto";
   font-size: 14px;
   font-weight: 400;
+  text-align: center;
 }
 main.trick-detail .bottom .comments {
   margin: 10px;
@@ -654,6 +668,45 @@ main.new-trick form .card div.textarea.is-active, main.new-trick form .card div.
 }
 main.new-trick form button.add-media {
   align-self: flex-start;
+}
+
+@media (max-width: 800px) {
+  main.trick-detail {
+    padding: 8vh 5% 0 5%;
+  }
+  main.trick-detail .bottom .trick-media-list {
+    flex-direction: column;
+    display: none;
+  }
+  main.trick-detail .bottom .trick-media-list.is-active {
+    display: flex;
+  }
+  main.trick-detail .bottom .trick-media-list img {
+    width: 100%;
+    max-width: unset !important;
+    height: auto !important;
+    margin-bottom: 20px;
+  }
+  main.trick-detail .bottom .trick-media-list img:last-child {
+    margin-bottom: 0;
+  }
+  main.trick-detail .bottom button.show-media {
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+  }
+  main.trick-detail .bottom .informations {
+    padding: 0 20px;
+    flex-direction: column;
+  }
+  main.trick-detail .bottom .informations .badge {
+    width: 100%;
+    margin: 0;
+    margin-bottom: 10px;
+  }
+  main.trick-detail .bottom .informations .badge:last-child {
+    margin-bottom: 0;
+  }
 }
 
 /*# sourceMappingURL=app.css.map */

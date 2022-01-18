@@ -106,6 +106,25 @@ html {
         body {
             main {
                 padding: 8vh 5% 0 5%;
+
+                .title-container {
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+
+                .trick-container {
+                    .trick-item {
+                        width: 100%;
+
+                        .bottom {
+                            a {
+                                button {
+                                    width: 100%;
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     }
