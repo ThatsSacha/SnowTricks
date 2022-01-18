@@ -62,10 +62,10 @@ main {
                     margin-right: 10px;
                 }
 
-                img, iframe {
-                    height: 150px;
-                    max-width: 200px;
-                    margin-right: 10px;
+                img, iframe, div {
+                    height: 150px!important;
+                    max-width: 200px!important;
+                    margin-right: 10px!important;
                 }
             }
 

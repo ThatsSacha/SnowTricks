@@ -16,10 +16,12 @@
         {% if tricks|length > 0 %}
             <div class="trick-container">
                 {% for trick in tricks %}
+                    {% set continue = true %}
                     <div class="trick-item">
                         {% for trickMedia in trick.trickMedia %}
-                            {% if trickMedia.isImg %}
+                            {% if trickMedia.isImg and continue %}
                                 <div class="top" style="background-image: url({{ trickMedia.url }})"></div>
+                                {% set continue = false %}
                             {% endif %}
                         {% endfor %}
                         <div class="bottom">

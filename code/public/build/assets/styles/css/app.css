@@ -475,10 +475,10 @@ main.trick-detail .bottom .trick-media-list div {
   min-width: 60px;
   margin-right: 10px;
 }
-main.trick-detail .bottom .trick-media-list img, main.trick-detail .bottom .trick-media-list iframe {
-  height: 150px;
-  max-width: 200px;
-  margin-right: 10px;
+main.trick-detail .bottom .trick-media-list img, main.trick-detail .bottom .trick-media-list iframe, main.trick-detail .bottom .trick-media-list div {
+  height: 150px !important;
+  max-width: 200px !important;
+  margin-right: 10px !important;
 }
 main.trick-detail .bottom p {
   font-family: Roboto;
