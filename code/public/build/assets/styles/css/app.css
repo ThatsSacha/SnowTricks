@@ -18,6 +18,31 @@ header a.logo {
   text-decoration: none;
   font-weight: 900;
 }
+header .hamburger {
+  border-radius: 8px;
+  background-color: white;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 4.5vh;
+  width: 4.5vh;
+  padding: 0 5px;
+  display: none;
+}
+header .hamburger.active .line.first {
+  animation: hamburger-line-1 700ms forwards 300ms;
+}
+header .hamburger.active .line.second {
+  animation: hamburger-line-middle 500ms forwards;
+}
+header .hamburger .line {
+  background-color: #171332;
+  height: 4px;
+  width: 100%;
+  border-radius: 8px;
+  margin: 2px 0;
+  position: relative;
+}
 header ul {
   display: flex;
 }
@@ -38,6 +63,57 @@ header ul li a:hover {
   letter-spacing: 1.8px;
 }
 
+@media (max-width: 800px) {
+  header {
+    padding: 10px 5%;
+  }
+  header .hamburger {
+    display: flex;
+  }
+  header ul {
+    position: absolute;
+    top: 0;
+    background: #171332ec;
+    left: 0;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    padding: 10px 0;
+    height: 0vh;
+    justify-content: space-evenly;
+    z-index: -2;
+    visibility: hidden;
+    backdrop-filter: blur(1px);
+    transition: 150ms;
+  }
+  header ul.active {
+    height: 20vh;
+    top: 7vh;
+    visibility: visible;
+  }
+}
+@keyframes hamburger-line-1 {
+  0% {
+    width: 0;
+  }
+  50% {
+    transform: rotate(45deg);
+    top: 2vh;
+  }
+  100% {
+    width: 100%;
+    transform: rotate(45deg);
+    top: 2vh;
+  }
+}
+@keyframes hamburger-line-middle {
+  25% {
+    background-color: #4ae3b5;
+  }
+  100% {
+    width: 0;
+  }
+}
 footer {
   height: 5vh;
   padding: 10px 10%;
@@ -134,6 +210,11 @@ html body main .trick-container .trick-item .bottom {
   padding: 20px;
 }
 
+@media (max-width: 800px) {
+  html body main {
+    padding: 8vh 5% 0 5%;
+  }
+}
 main.index {
   display: flex;
   flex-direction: column;
@@ -186,6 +267,14 @@ main.index section.trick-container .trick-item .block-action {
   align-self: center;
 }
 
+@media (max-width: 800px) {
+  main.index section.top h1 {
+    font-size: 60px;
+  }
+  main.index section.top svg {
+    max-width: 100%;
+  }
+}
 button {
   width: auto;
   padding: 1% 40px;

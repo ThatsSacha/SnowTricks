@@ -23,4 +23,9 @@ $(function() {
     $('main').on('click', '.remove-media', function() {
         $(this).parent().parent().remove();
     });
+
+    $('header .hamburger').on('click', () => {
+        $('header ul').toggleClass('active');
+        $('header .hamburger').toggleClass('active');
+    });
 });

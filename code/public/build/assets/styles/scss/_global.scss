@@ -100,3 +100,13 @@ html {
         }
     }
 }
+
+@media (max-width: $mobile) {
+    html {
+        body {
+            main {
+                padding: 8vh 5% 0 5%;
+            }
+        }
+    }
+}

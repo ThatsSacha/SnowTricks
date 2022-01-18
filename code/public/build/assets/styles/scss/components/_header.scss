@@ -18,6 +18,39 @@ header {
         }
     }
 
+    .hamburger {
+        border-radius: $border-radius;
+        background-color: white;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 4.5vh;
+        width: 4.5vh;
+        padding: 0 5px;
+        display: none;
+
+        &.active {
+            .line {
+                &.first {
+                    animation: hamburger-line-1 700ms forwards 300ms;
+                }
+                
+                &.second {
+                    animation: hamburger-line-middle 500ms forwards;
+                }
+            }
+        }
+
+        .line {
+            background-color: $blue;
+            height: 4px;
+            width: 100%;
+            border-radius: $border-radius;
+            margin: 2px 0;
+            position: relative;
+        }
+    }
+
     ul {
         display: flex;
 
@@ -39,5 +72,65 @@ header {
                 }
             }
         }
+    }
+}
+
+@media (max-width: $mobile) {
+    header {
+        padding: 10px 5%;
+
+        .hamburger {
+            display: flex;
+        }
+
+        ul {
+            position: absolute;
+            top: 0;
+            background: $blue-transparent;
+            left: 0;
+            flex-direction: column;
+            width: 100%;
+            align-items: center;
+            padding: 10px 0;
+            height: 0vh;
+            justify-content: space-evenly;
+            z-index: -2;
+            visibility: hidden;
+            backdrop-filter: blur(1px);
+            transition: 150ms;
+
+            &.active {
+                height: 20vh;
+                top: 7vh;
+                visibility: visible;
+            }
+        }
+    }
+}
+
+@keyframes hamburger-line-1 {
+    0% {
+        width: 0;
+    }
+
+    50% {
+        transform: rotate(45deg);
+        top: 2vh;
+    }
+
+    100% {
+        width: 100%;
+        transform: rotate(45deg);
+        top: 2vh;
+    }
+}
+
+@keyframes hamburger-line-middle {
+    25% {
+        background-color: $green;
+    }
+
+    100% {
+        width: 0;
     }
 }
