@@ -27,15 +27,66 @@ header {
 
             a {
                 text-decoration: none;
-                color: $broken-white;;
-                font-size: 18px;
-                font-weight: 300;
-                letter-spacing: 2px;
-                transition: 150ms;
+
+                span {
+                    color: $broken-white;;
+                    font-size: 18px;
+                    font-weight: 300;
+                    letter-spacing: 2px;
+                    transition: 150ms;
+                }
 
                 &:hover {
                     color: $green;
                     letter-spacing: 1.8px;
+                }
+
+                i {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: $mobile) {
+    header {
+        padding: 10px 5%;
+        justify-content: center;
+        height: 5vh;
+
+        ul {
+            position: absolute;
+            top: 88vh;
+            background: $blue-transparent;
+            flex-direction: row;
+            width: 90%;
+            align-items: center;
+            padding: 10px 0;
+            height: 10vh;
+            justify-content: space-evenly;
+            z-index: -2;
+            backdrop-filter: blur(1px);
+            border-radius: $border-radius;
+            transition: 150ms;
+
+            li {
+                &.is-mobile {
+                    a {
+                        i {
+                            display: block;
+                            color: white;
+                            font-size: 30px;
+                        }
+
+                        span {
+                            display: none;
+                        }
+                    }
+                }
+
+                &:not(.is-mobile) {
+                    display: none;
                 }
             }
         }

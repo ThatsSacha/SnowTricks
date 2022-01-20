@@ -23,4 +23,8 @@ $(function() {
     $('main').on('click', '.remove-media', function() {
         $(this).parent().parent().remove();
     });
+
+    $('button.show-media').on('click', () => {
+        $('.trick-media-list').toggleClass('is-active');
+    })
 });

@@ -27,6 +27,8 @@ header ul li {
 }
 header ul li a {
   text-decoration: none;
+}
+header ul li a span {
   color: #eeeeee;
   font-size: 18px;
   font-weight: 300;
@@ -37,7 +39,43 @@ header ul li a:hover {
   color: #4ae3b5;
   letter-spacing: 1.8px;
 }
+header ul li a i {
+  display: none;
+}
 
+@media (max-width: 800px) {
+  header {
+    padding: 10px 5%;
+    justify-content: center;
+    height: 5vh;
+  }
+  header ul {
+    position: absolute;
+    top: 88vh;
+    background: #171332f5;
+    flex-direction: row;
+    width: 90%;
+    align-items: center;
+    padding: 10px 0;
+    height: 10vh;
+    justify-content: space-evenly;
+    z-index: -2;
+    backdrop-filter: blur(1px);
+    border-radius: 8px;
+    transition: 150ms;
+  }
+  header ul li.is-mobile a i {
+    display: block;
+    color: white;
+    font-size: 30px;
+  }
+  header ul li.is-mobile a span {
+    display: none;
+  }
+  header ul li:not(.is-mobile) {
+    display: none;
+  }
+}
 footer {
   height: 5vh;
   padding: 10px 10%;
@@ -134,6 +172,21 @@ html body main .trick-container .trick-item .bottom {
   padding: 20px;
 }
 
+@media (max-width: 800px) {
+  html body main {
+    padding: 6vh 5% 0 5%;
+  }
+  html body main .title-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  html body main .trick-container .trick-item {
+    width: 100%;
+  }
+  html body main .trick-container .trick-item .bottom a button {
+    width: 100%;
+  }
+}
 main.index {
   display: flex;
   flex-direction: column;
@@ -186,6 +239,14 @@ main.index section.trick-container .trick-item .block-action {
   align-self: center;
 }
 
+@media (max-width: 800px) {
+  main.index section.top h1 {
+    font-size: 60px;
+  }
+  main.index section.top svg {
+    max-width: 100%;
+  }
+}
 button {
   width: auto;
   padding: 1% 40px;
@@ -407,6 +468,11 @@ textarea {
   height: 100px;
 }
 
+@media (max-width: 800px) {
+  form button {
+    width: 100%;
+  }
+}
 main.created svg {
   margin: 75px 0;
 }
@@ -420,6 +486,11 @@ main.login form a.reset-password {
   font-size: 14px;
 }
 
+@media (max-width: 800px) {
+  main.login form a.reset-password {
+    margin-bottom: 20px;
+  }
+}
 main.trick-detail {
   padding: 10%;
 }
@@ -480,6 +551,9 @@ main.trick-detail .bottom .trick-media-list img, main.trick-detail .bottom .tric
   max-width: 200px !important;
   margin-right: 10px !important;
 }
+main.trick-detail .bottom button.show-media {
+  display: none;
+}
 main.trick-detail .bottom p {
   font-family: Roboto;
   margin: 30px 20px;
@@ -531,6 +605,7 @@ main.trick-detail .bottom .add-comment span {
   font-family: "Roboto";
   font-size: 14px;
   font-weight: 400;
+  text-align: center;
 }
 main.trick-detail .bottom .comments {
   margin: 10px;
@@ -565,6 +640,52 @@ main.new-trick form .card div.textarea.is-active, main.new-trick form .card div.
 }
 main.new-trick form button.add-media {
   align-self: flex-start;
+}
+
+@media (max-width: 800px) {
+  main.new-trick form button.save {
+    margin-top: 20px;
+  }
+  main.trick-detail {
+    padding: 6vh 5% 0 5%;
+  }
+  main.trick-detail .bottom .trick-media-list {
+    flex-direction: column;
+    display: none;
+  }
+  main.trick-detail .bottom .trick-media-list.is-active {
+    display: flex;
+  }
+  main.trick-detail .bottom .trick-media-list img {
+    width: 100%;
+    max-width: unset !important;
+    height: auto !important;
+    margin-bottom: 20px;
+  }
+  main.trick-detail .bottom .trick-media-list img:last-child {
+    margin-bottom: 0;
+  }
+  main.trick-detail .bottom button.show-media {
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+  }
+  main.trick-detail .bottom .informations {
+    padding: 0 20px;
+    flex-direction: column;
+  }
+  main.trick-detail .bottom .informations .badge {
+    width: 100%;
+    margin: 0;
+    margin-bottom: 10px;
+  }
+  main.trick-detail .bottom .informations .badge:last-child {
+    margin-bottom: 0;
+  }
+  main.trick-detail .bottom .comments .card .card-title {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 /*# sourceMappingURL=app.css.map */

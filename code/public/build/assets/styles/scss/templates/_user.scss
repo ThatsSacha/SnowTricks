@@ -22,3 +22,17 @@ main {
         }
     }
 }
+
+@media (max-width: $mobile) {
+    main {
+        &.login {
+            form {
+                a {
+                    &.reset-password {
+                        margin-bottom: 20px;
+                    }
+                }
+            }
+        }
+    }
+}

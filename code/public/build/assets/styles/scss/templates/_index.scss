@@ -62,3 +62,21 @@ main {
         }
     }
 }
+
+@media (max-width: $mobile) {
+    main {
+        &.index {
+            section {
+                &.top {
+                    h1 {
+                        font-size: 60px;
+                    }
+
+                    svg {
+                        max-width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
