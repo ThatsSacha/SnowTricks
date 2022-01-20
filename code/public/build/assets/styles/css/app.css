@@ -50,8 +50,8 @@ header ul li a i {
     height: 5vh;
   }
   header ul {
-    position: absolute;
-    top: 88vh;
+    position: fixed;
+    bottom: 2vh;
     background: #171332f5;
     flex-direction: row;
     width: 90%;

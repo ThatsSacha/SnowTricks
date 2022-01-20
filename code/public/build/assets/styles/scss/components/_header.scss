@@ -56,8 +56,8 @@ header {
         height: 5vh;
 
         ul {
-            position: absolute;
-            top: 88vh;
+            position: fixed;
+            bottom: 2vh;
             background: $blue-transparent;
             flex-direction: row;
             width: 90%;
