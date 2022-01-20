@@ -31,7 +31,7 @@ class CommentController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'comment_new', methods: ['GET', 'POST'])]
+    #[Route('/is-authenticated/new', name: 'comment_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $slug = $request->query->get('slug');
@@ -67,7 +67,7 @@ class CommentController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'comment_edit', methods: ['GET', 'POST'])]
+    #[Route('/is-authenticated/{id}/edit', name: 'comment_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Comment $comment, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(CommentType::class, $comment);
@@ -85,7 +85,7 @@ class CommentController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'comment_delete', methods: ['POST'])]
+    #[Route('/is-authenticated/{id}', name: 'comment_delete', methods: ['POST'])]
     public function delete(Request $request, Comment $comment, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$comment->getId(), $request->request->get('_token'))) {

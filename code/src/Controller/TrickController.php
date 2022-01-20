@@ -22,7 +22,7 @@ class TrickController extends AbstractController
         $this->service = $service;
     }
 
-    #[Route('/{id}/edit', name: 'trick_edit', methods: ['GET', 'POST'], requirements: ['id' => '\d+'])]
+    #[Route('/is-authenticated/{id}/edit', name: 'trick_edit', methods: ['GET', 'POST'], requirements: ['id' => '\d+'])]
     public function edit(Request $request, Trick $trick, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(TrickType::class, $trick);
@@ -30,7 +30,6 @@ class TrickController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->service->edit($trick);
-            //$entityManager->flush();
 
             return $this->redirectToRoute('trick_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -85,7 +84,7 @@ class TrickController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'trick_delete', methods: ['POST'])]
+    #[Route('/is-authenticated/{id}', name: 'trick_delete', methods: ['POST'])]
     public function delete(Request $request, Trick $trick, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$trick->getId(), $request->request->get('_token'))) {

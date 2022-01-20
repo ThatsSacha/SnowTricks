@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class TrickMediaController extends AbstractController
 {
 
-    #[Route('/{id}/{_token}', name: 'trick_media_delete', methods: ['GET'], requirements: ['id' => '\d+'])]
+    #[Route('/is-authenticated/{id}/{_token}', name: 'trick_media_delete', methods: ['GET'], requirements: ['id' => '\d+'])]
     public function delete(Request $request, TrickMedia $trickMedia, EntityManagerInterface $entityManager): Response
     {
         //dd('here', $request);
