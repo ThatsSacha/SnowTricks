@@ -1,5 +1,14 @@
 {{ form_start(form) }}
     {{ form_widget(form) }}
+    {% for type, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="{{ type }}">
+                <div>
+                    {{ message }}
+                </div>
+            </div>
+        {% endfor %}
+    {% endfor %}
     <button class="btn">
         <i class="bi bi-person-plus"></i>
         {{ button_label|default('S\'inscrire') }}

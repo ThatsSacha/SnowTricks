@@ -54,19 +54,32 @@ class UserService {
         
                         if ($cover !== null) {
                             $user->setCover($cover);
-                            $token = $this->generateToken();
-                            $user->setToken($token);
                             $user->setCreatedAt(date_create());
 
-                            $this->emi->persist($user);
+                            $user = $this->emi->persist($user);
                             $this->emi->flush();
-
-                            $this->mailerService->sendEmail($mail, $user->getPseudo() . ', valide ton compte !', $this->mailTemplate->getValidateAccount($user));
+                            
+                            return $user;
                         }
+
+                        return [
+                            'isError' => true,
+                            'type' => 'error',
+                            'message' => 'Cette extension de fichier n\'est pas autorisée'
+                        ];
                     }
                 }
             }
         }
+    }
+
+    private function validateAccountProcess(User $user) {
+        $token = $this->generateToken();
+        $user->setToken($token);
+        $this->emi->persist($user);
+        $this->emi->flush();
+
+        $this->mailerService->sendEmail($mail, $user->getPseudo() . ', valide ton compte !', $this->mailTemplate->getValidateAccount($user));
     }
 
     /**

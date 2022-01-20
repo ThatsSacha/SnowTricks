@@ -38,11 +38,15 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->service->new($user, $request);
+            $create = $this->service->new($user, $request);
 
-            return $this->render('user/created.html.twig', [
-                'user' => $user
-            ]);
+            if (isset($create['isError']) && $create['isError']) {
+                $this->addFlash($create['type'], $create['message']);
+            } else {
+                return $this->render('user/created.html.twig', [
+                    'user' => $user
+                ]);
+            }
         }
 
         return $this->renderForm('user/new.html.twig', [
