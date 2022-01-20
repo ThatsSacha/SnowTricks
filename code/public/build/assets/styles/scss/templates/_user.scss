@@ -12,25 +12,16 @@ main {
 
     &.login {
         form {
-            a {
-                &.reset-password {
+            .btn-group {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 10px;
+
+                a {
                     color: $grey;
                     font-family: Roboto;
                     font-size: 14px;
-                }
-            }
-        }
-    }
-}
-
-@media (max-width: $mobile) {
-    main {
-        &.login {
-            form {
-                a {
-                    &.reset-password {
-                        margin-bottom: 20px;
-                    }
                 }
             }
         }

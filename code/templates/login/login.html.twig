@@ -45,7 +45,14 @@
                             </div>
                         </div>
                     {% endif %}
-                    <a class="reset-password" href="{{ path('user_reset-password') }}">Mot de passe oublié</a>
+                    <div class="btn-group">
+                        <a class="reset-password" href="{{ path('user_reset-password') }}">
+                            Mot de passe oublié
+                        </a>
+                        <a class="register" href="{{ path('user_new') }}">
+                            S'inscrire
+                        </a>
+                    </div>
                     <button type="submit">
                         <i class="bi bi-box-arrow-in-right"></i>
                         Se connecter

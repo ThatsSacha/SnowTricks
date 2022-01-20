@@ -485,17 +485,18 @@ main.created h2 {
   align-self: center;
   text-align: center;
 }
-main.login form a.reset-password {
+main.login form .btn-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+main.login form .btn-group a {
   color: #7e7d7d;
   font-family: Roboto;
   font-size: 14px;
 }
 
-@media (max-width: 800px) {
-  main.login form a.reset-password {
-    margin-bottom: 20px;
-  }
-}
 main.trick-detail {
   padding: 10%;
 }
