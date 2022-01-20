@@ -8,6 +8,10 @@ main {
             align-self: center;
             text-align: center;
         }
+
+        a {
+            align-self: center;
+        }
     }
 
     &.login {
@@ -23,6 +27,20 @@ main {
                     font-family: Roboto;
                     font-size: 14px;
                 }
+            }
+        }
+    }
+}
+
+@media (max-width: $mobile) {
+    main {
+        &.created {
+            svg {
+                max-width: 100%;
+            }
+
+            a {
+                margin-top: 10px;
             }
         }
     }

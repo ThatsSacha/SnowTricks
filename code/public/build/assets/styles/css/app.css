@@ -485,6 +485,9 @@ main.created h2 {
   align-self: center;
   text-align: center;
 }
+main.created a {
+  align-self: center;
+}
 main.login form .btn-group {
   display: flex;
   align-items: center;
@@ -497,6 +500,14 @@ main.login form .btn-group a {
   font-size: 14px;
 }
 
+@media (max-width: 800px) {
+  main.created svg {
+    max-width: 100%;
+  }
+  main.created a {
+    margin-top: 10px;
+  }
+}
 main.trick-detail {
   padding: 10%;
 }
