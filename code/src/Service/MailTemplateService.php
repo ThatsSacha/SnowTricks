@@ -17,7 +17,7 @@ class MailTemplateService {
             <body>
                 <main style="background-color: white;background: white;padding:50px;border-radius:8px;font-family:\'Helvetica\';">
                     <img
-                        src="https://snowtricks.sacha-cohen.fr/dist/img/logo.png"
+                        src="https://snowtricks.sacha-cohen.fr/img/logos/logo.png"
                         alt="Snowtricks logo"
                         style="width: auto;height:auto;max-width:200px;max-height:200px;"
                     > 
