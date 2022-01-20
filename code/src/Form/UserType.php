@@ -27,6 +27,7 @@ class UserType extends AbstractType
                 'help' => 'Doit contenir minimum 8 caractères et au moins 1 chiffre',
                 'attr' => array(
                     'placeholder' => '*******',
+                    'autocomplete' => 'new-password'
                 )
             ])
             ->add('pseudo', null, [
