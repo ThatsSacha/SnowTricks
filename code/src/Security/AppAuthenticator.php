@@ -63,7 +63,7 @@ class AppAuthenticator extends AbstractLoginFormAuthenticator
             $session = new Session();
             $session->setId($sessionId);
             $session->invalidate();
-            //$this->userService->sendResetPassword($token->getUser()->getEmail());
+            $this->userService->validateAccountProcess($token->getUser());
 
             return new RedirectResponse('/user/needs-confirmation/' . $token->getUser()->getEmail(), Response::HTTP_FOUND);
         }

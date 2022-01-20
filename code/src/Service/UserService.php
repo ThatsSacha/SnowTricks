@@ -56,30 +56,54 @@ class UserService {
                             $user->setCover($cover);
                             $user->setCreatedAt(date_create());
 
-                            $user = $this->emi->persist($user);
-                            $this->emi->flush();
-                            
-                            return $user;
-                        }
+                            $user = $this->saveObject($user);
 
-                        return [
-                            'isError' => true,
-                            'type' => 'error',
-                            'message' => 'Cette extension de fichier n\'est pas autorisée'
-                        ];
+                            if ($user !== null) {
+                                $this->validateAccountProcess($user);
+                            } else {
+                                return [
+                                    'isError' => true,
+                                    'type' => 'error',
+                                    'message' => 'Cet utilisateur n\'a pas pu être créé.'
+                                ];
+                            }
+                        } else {
+                            return [
+                                'isError' => true,
+                                'type' => 'error',
+                                'message' => 'Cette extension de fichier n\'est pas autorisée'
+                            ];
+                        }
                     }
                 }
             }
         }
     }
 
-    private function validateAccountProcess(User $user) {
+    /**
+     * This function flush to db and return the user object
+     * 
+     * @param User $user
+     * 
+     * @return User
+     */
+    private function saveObject(User $user): User {
+        $this->emi->persist($user);
+        $this->emi->flush();
+        return $this->repo->findOneBy(array('id' => $user->getId()));
+    }
+
+    public function validateAccountProcess(User $user) {
         $token = $this->generateToken();
         $user->setToken($token);
         $this->emi->persist($user);
         $this->emi->flush();
 
-        $this->mailerService->sendEmail($mail, $user->getPseudo() . ', valide ton compte !', $this->mailTemplate->getValidateAccount($user));
+        $this->mailerService->sendEmail(
+            $user->getEmail(),
+            $user->getPseudo() . ', valide ton compte !',
+            $this->mailTemplate->getValidateAccount($user)
+        );
     }
 
     /**
