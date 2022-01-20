@@ -20,31 +20,29 @@
         </div>
     </div>
     {{ form_widget(form._token) }}
-    {% if trick.name %}
+    {% if trick.name and trick.id %}
         {% for i, child in form.children.trickMedia %}
             <div class="card grey">
                 <span class="card-title">
                     Ajout média
-                    <a href="{{ path('trick_media_delete', {'id': child.vars.value.id, _token: csrf_token('delete' ~ child.vars.value.id)}) }}" onclick="return confirm('Es-tu sur de vouloir supprimer ce media ?');">
+                    <a
+                        href="{{ path('trick_media_delete', {'id': child.vars.value.id, _token: csrf_token('delete' ~ child.vars.value.id)}) }}"
+                        onclick="return confirm('Es-tu sur de vouloir supprimer ce media ?');"
+                    >
                         <i class="bi bi-x-circle"></i>
                     </a>
                 </span>
                 <div class="btn-toggle-container">
-                    {% if child.vars.value.isImg %}
-                        <span>Est-ce une image ?</span>
-                        <div class="btn-toggle">
-                            <div class="round active">
-                                <input type="hidden" name="trick[trickMedia][{{ i }}][isImg]" value="true">
-                            </div>
+                    <span>Est-ce une image ?</span>
+                    <div class="btn-toggle">
+                        <div class="round {{ child.vars.value.isImg ? 'active' : '' }}">
+                            {% if child.vars.value.isImg %}
+                                <input type="checkbox" name="trick[trickMedia][{{ i }}][isImg]" checked>
+                            {% else %}
+                                <input type="checkbox" name="trick[trickMedia][{{ i }}][isImg]">
+                            {% endif %}
                         </div>
-                    {% else %}
-                        <span>Est-ce une image ?</span>
-                        <div class="btn-toggle">
-                            <div class="round">
-                                <input type="hidden" name="trick[trickMedia][{{ i }}][isImg]" value="false">
-                            </div>
-                        </div>
-                    {% endif %}
+                    </div>
                 </div>
                 <div class="textarea {{ child.vars.value.isImg ? '' : 'is-active' }}">
                     <label for="embed">Code embed</label>
@@ -58,27 +56,26 @@
                 </div>
             </div>
         {% endfor %}
-        {% else %}
+    {% else %}
         <div class="card grey">
             <span class="card-title">
                 Ajout média
-                <i class="bi bi-x-circle remove-media"></i>
             </span>
             <div class="btn-toggle-container">
                 <span>Est-ce une image ?</span>
                 <div class="btn-toggle">
-                    <div class="round">
-                        <input type="hidden" name="trick[trickMedia][0][isImg]" value="false">
+                    <div class="round active">
+                        <input type="checkbox" name="trick[trickMedia][0][isImg]" checked>
                     </div>
                 </div>
             </div>
-            <div class="textarea is-active">
-                <label for="embed">Code embed</label>
-                <textarea id="embed" class="white" name="trick[trickMedia][0][embed]" placeholder='Ex: <iframe width="560" height="315" src="https://www.youtube.com/embed/monyw0mnLZg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'></textarea>
-            </div>
-            <div class="url">
+            <div class="url is-active">
                 <label for="url">URL de l'image</label>
                 <input type="url" id="url" class="white" name="trick[trickMedia][0][url]" placeholder="Ex: https://img.redbull.com/images">
+            </div>
+            <div class="textarea">
+                <label for="embed">Code embed</label>
+                <textarea id="embed" class="white" name="trick[trickMedia][0][embed]" placeholder='Ex: <iframe width="560" height="315" src="https://www.youtube.com/embed/monyw0mnLZg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'></textarea>
             </div>
         </div>
     {% endif %}
@@ -86,6 +83,15 @@
         <i class="bi bi-plus"></i>
         Ajouter un média
     </button>
+    {% for type, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="{{ type }}">
+                <div>
+                    {{ message }}
+                </div>
+            </div>
+        {% endfor %}
+    {% endfor %}
     <button class="btn save">
         <i class="bi bi-plus"></i>
         {{ button_label|default('Ajouter le trick') }}

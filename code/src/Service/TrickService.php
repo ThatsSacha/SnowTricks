@@ -20,15 +20,45 @@ class TrickService {
         $this->trickGroupService = $trickGroupService;
     }
 
-    public function edit(Trick $trick) {
+    /**
+     * This function veriy if in the trickMedia collection, if one image is filled up at least. It retrurns Trick if it's ok, else it returns false.
+     * 
+     * @param Trick $trick
+     * 
+     * @return Trick|bool
+     */
+    private function verifyAndPersistTrickMedia(Trick $trick): Trick|bool {
+        $hasImg = false;
+
         foreach ($trick->getTrickMedia() as $trickMedia) {
-            if ($trickMedia->getId() === null) {
-                $this->emi->persist($trickMedia);
+            if ($trickMedia->getIsImg() && !empty($trickMedia->getUrl())) {
+                $hasImg = true;
             }
+
+            $this->emi->persist($trickMedia);
         }
 
-        $this->emi->persist($trick);
-        $this->emi->flush();
+        return $hasImg ? $trick : false;
+    }
+
+    /**
+     * @param Trick $trick
+     */
+    public function edit(Trick $trick) {
+        $trick = $this->verifyAndPersistTrickMedia($trick);
+
+        if ($trick instanceof Trick) {
+            $this->emi->persist($trick);
+            $this->emi->flush();
+    
+            return $this->findOneBySlug($trick->getSlug());
+        }
+
+        return [
+            'isError' => true,
+            'type' => 'error',
+            'message' => 'Vous devez ajouter au moins une image à votre trick.',
+        ];
     }
 
     /**
@@ -36,28 +66,31 @@ class TrickService {
      * @param User $user
      */
     public function new(Trick $trick, User $user) {
-        foreach ($trick->getTrickMedia() as $trickMedia) {
-            $this->emi->persist($trickMedia);
-        }
+        $trick = $this->verifyAndPersistTrickMedia($trick);
         
-        $name = $trick->getName();
-        $trickData = $this->repo->findOneBy(array('name' => $name));
-        $response = array();
-
-        if ($trickData === null) {
-            $slug = $this->generateSlug($trick->getName());
-
-            $trick->setCreatedAt(date_create())
-                ->setCreatedBy($user)
-                ->setSlug($slug);
-
-            $this->emi->persist($trick);
-            $this->emi->flush();
-        } else {
-            $response[] = 'Le trick existe déjà';
+        if ($trick instanceof Trick) {
+            $name = $trick->getName();
+            $trickData = $this->repo->findOneBy(array('name' => $name));
+    
+            if ($trickData === null) {
+                $slug = $this->generateSlug($trick->getName());
+    
+                $trick->setCreatedAt(date_create())
+                    ->setCreatedBy($user)
+                    ->setSlug($slug);
+    
+                $this->emi->persist($trick);
+                $this->emi->flush();
+    
+                return $this->findOneBySlug($slug);
+            }
         }
-        
-        return $response;
+
+        return [
+            'isError' => true,
+            'type' => 'error',
+            'message' => 'Vous devez ajouter au moins une image à votre trick.',
+        ];
     }
 
     /**

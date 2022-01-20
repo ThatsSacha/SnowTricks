@@ -14,9 +14,11 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints\Unique;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=TrickRepository::class)
+ * @UniqueEntity(fields={"name"}, message="Ce nom de trick est déjà utilisé.")
  */
 class Trick
 {

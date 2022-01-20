@@ -29,9 +29,13 @@ class TrickController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->service->edit($trick);
+            $trickEdited = $this->service->edit($trick);
 
-            return $this->redirectToRoute('trick_index', [], Response::HTTP_SEE_OTHER);
+            if ($trickEdited instanceof Trick) {
+                return $this->redirectToRoute('trick_show', ['slug' => $trickEdited->getSlug()]);
+            } else {
+                $this->addFlash($trickEdited['type'], $trickEdited['message']);
+            }
         }
         
         return $this->renderForm('trick/edit.html.twig', [
@@ -56,9 +60,13 @@ class TrickController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->service->new($trick, $this->getUser());
-
-            return $this->redirectToRoute('trick_index', [], Response::HTTP_SEE_OTHER);
+            $trickCreated = $this->service->new($trick, $this->getUser());
+            
+            if ($trickCreated instanceof Trick) {
+                return $this->redirectToRoute('trick_show', ['slug' => $trickCreated->getSlug()]);
+            } else {
+                $this->addFlash($trickCreated['type'], $trickCreated['message']);
+            }
         }
 
         return $this->renderForm('trick/new.html.twig', [

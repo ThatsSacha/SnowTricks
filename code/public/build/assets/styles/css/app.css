@@ -354,6 +354,7 @@ form .btn-toggle-container .btn-toggle {
   justify-content: center;
   padding: 0 5px;
   position: relative;
+  cursor: pointer;
 }
 form .btn-toggle-container .btn-toggle .round {
   margin-bottom: 0;
@@ -365,7 +366,6 @@ form .btn-toggle-container .btn-toggle .round {
   position: absolute;
   display: flex;
   align-items: center;
-  cursor: pointer;
   transition: 150ms;
 }
 form .btn-toggle-container .btn-toggle .round.active {
