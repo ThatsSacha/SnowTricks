@@ -4,31 +4,42 @@
         <a class="logo" href="{{ path('index') }}">
             SnowTricks
         </a>
-        <div class="hamburger">
-            <div class="line first"></div>
-            <div class="line second"></div>
-            <div class="line third"></div>
-        </div>
         <ul>
-            <li>
-                <a href="{{ path('index') }}">Accueil</a>
+            <li class="is-mobile">
+                <a href="{{ path('index') }}">
+                    <i class="bi bi-house-door"></i>
+                    <span>Accueil</span>
+                </a>
             </li>
-            <li>
-                <a href="{{ path('trick_index') }}">Tricks</a>
+            <li class="is-mobile">
+                <a href="{{ path('trick_index') }}">
+                    <i class="bi bi-columns-gap"></i>
+                    <span>Tricks</span>
+                </a>
             </li>
             {% if app.user %}
                 <li>
-                    <a href="{{ path('app_login') }}">Compte <small>({{ app.user.pseudo }})</small></a>
+                    <a href="{{ path('app_login') }}">
+                        <span>Compte <small>({{ app.user.pseudo }})</small></span>
+                    </a>
                 </li>
-                <li>
-                    <a href="{{ path('app_logout') }}">Déconnexion</a>
+                <li class="is-mobile">
+                    <a href="{{ path('app_logout') }}">
+                        <i class="bi bi-box-arrow-right"></i>
+                        <span>Déconnexion</span>
+                    </a>
                 </li>
             {% else %}
-                <li>
-                    <a href="{{ path('app_login') }}">Connexion</a>
+                <li class="is-mobile">
+                    <a href="{{ path('app_login') }}">
+                        <i class="bi bi-person-circle"></i>
+                        <span>Connexion</span>
+                    </a>
                 </li>
                 <li>
-                    <a href="{{ path('user_new') }}">Inscription</a>
+                    <a href="{{ path('user_new') }}">
+                        <span>Inscription</span>
+                    </a>
                 </li>
             {% endif %}
         </ul>

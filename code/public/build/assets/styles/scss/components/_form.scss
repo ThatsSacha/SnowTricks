@@ -159,3 +159,11 @@ textarea {
     resize: vertical;
     height: 100px;
 }
+
+@media (max-width: $mobile) {
+    form {
+        button {
+            width: 100%;
+        }
+    }
+}

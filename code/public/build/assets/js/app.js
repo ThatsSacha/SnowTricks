@@ -24,11 +24,6 @@ $(function() {
         $(this).parent().parent().remove();
     });
 
-    $('header .hamburger').on('click', () => {
-        $('header ul').toggleClass('active');
-        $('header .hamburger').toggleClass('active');
-    });
-
     $('button.show-media').on('click', () => {
         $('.trick-media-list').toggleClass('is-active');
     })
