@@ -58,3 +58,9 @@ button {
         }
     }
 }
+
+@media (max-width: $mobile) {
+    button {
+        min-height: 45px;
+    }
+}
