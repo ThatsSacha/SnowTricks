@@ -134,6 +134,7 @@ input, textarea, select {
     padding: 5px;
     background: $broken-white;
     color: $blue;
+    font-size: 13px;
     transition: 150ms;
 
     &:focus {
@@ -151,8 +152,8 @@ input, textarea, select {
     }
 }
 
-input {
-    height: 35px;
+input, select {
+    height: 40px;
 }
 
 textarea {
@@ -173,6 +174,10 @@ textarea {
             &::placeholder {
                 font-size: 14px;
             }
+        }
+
+        textarea {
+            height: 100px;
         }
     }
 }

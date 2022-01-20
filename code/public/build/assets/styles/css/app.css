@@ -450,6 +450,7 @@ input, textarea, select {
   padding: 5px;
   background: #eeeeee;
   color: #171332;
+  font-size: 13px;
   transition: 150ms;
 }
 input:focus, textarea:focus, select:focus {
@@ -464,8 +465,8 @@ input.white, textarea.white, select.white {
   background-color: white;
 }
 
-input {
-  height: 35px;
+input, select {
+  height: 40px;
 }
 
 textarea {
@@ -483,6 +484,9 @@ textarea {
   }
   form input::placeholder, form textarea::placeholder, form select::placeholder {
     font-size: 14px;
+  }
+  form textarea {
+    height: 100px;
   }
 }
 main.created svg {
