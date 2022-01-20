@@ -165,5 +165,14 @@ textarea {
         button {
             width: 100%;
         }
+
+        input, textarea, select {
+            height: 45px;
+            font-size: 14px;
+
+            &::placeholder {
+                font-size: 14px;
+            }
+        }
     }
 }

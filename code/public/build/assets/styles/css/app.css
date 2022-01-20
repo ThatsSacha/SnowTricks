@@ -477,6 +477,13 @@ textarea {
   form button {
     width: 100%;
   }
+  form input, form textarea, form select {
+    height: 45px;
+    font-size: 14px;
+  }
+  form input::placeholder, form textarea::placeholder, form select::placeholder {
+    font-size: 14px;
+  }
 }
 main.created svg {
   margin: 75px 0;
