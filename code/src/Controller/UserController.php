@@ -41,13 +41,21 @@ class UserController extends AbstractController
             $this->service->new($user, $request);
 
             return $this->render('user/created.html.twig', [
-                'user' => $user,
+                'user' => $user
             ]);
         }
 
         return $this->renderForm('user/new.html.twig', [
             'user' => $user,
             'form' => $form,
+        ]);
+    }
+
+    #[Route('/needs-confirmation/{mail}', name: 'user_needs-confirmation', methods: ['GET'])]
+    public function needsConfirmation(Request $request, string $mail): Response
+    {
+        return $this->render('user/needs-confirmation.html.twig', [
+            'mail' => $mail
         ]);
     }
 
@@ -72,7 +80,9 @@ class UserController extends AbstractController
     #[Route('/reset-password', name: 'user_send-reset-password', methods: ['POST'])]
     public function sendResetPassword(Request $request): Response
     {
-        $this->service->sendResetPassword($request);
+        $mail = $request->get('email');
+        $this->service->sendResetPassword($mail);
+
         return $this->render('user/reset-password.html.twig', [
             'isSent' => true
         ]);

@@ -2,9 +2,11 @@
 
 namespace App\Security;
 
+use App\Service\UserService;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Security;
@@ -20,12 +22,17 @@ class AppAuthenticator extends AbstractLoginFormAuthenticator
     use TargetPathTrait;
 
     public const LOGIN_ROUTE = 'app_login';
+    private UserService $userService;
 
     private UrlGeneratorInterface $urlGenerator;
 
-    public function __construct(UrlGeneratorInterface $urlGenerator)
+    public function __construct(
+        UrlGeneratorInterface $urlGenerator,
+        UserService $userService
+    )
     {
         $this->urlGenerator = $urlGenerator;
+        $this->userService = $userService;
     }
 
     public function authenticate(Request $request): Passport
@@ -49,9 +56,17 @@ class AppAuthenticator extends AbstractLoginFormAuthenticator
             return new RedirectResponse($targetPath);
         }
 
-        // For example:
-        return new RedirectResponse($this->urlGenerator->generate('index'));
-        //throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
+        if ($token->getUser()->getIsAccountConfirmed()) {
+            return new RedirectResponse($this->urlGenerator->generate('index'));
+        } else {
+            $sessionId = $request->getSession()->getId();
+            $session = new Session();
+            $session->setId($sessionId);
+            $session->invalidate();
+            //$this->userService->sendResetPassword($token->getUser()->getEmail());
+
+            return new RedirectResponse('/user/needs-confirmation/' . $token->getUser()->getEmail(), Response::HTTP_FOUND);
+        }
     }
 
     protected function getLoginUrl(Request $request): string

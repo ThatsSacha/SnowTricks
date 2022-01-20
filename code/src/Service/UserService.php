@@ -147,10 +147,9 @@ class UserService {
     }
 
     /**
-     * @param Request $request
+     * @param string $mail
      */
-    public function sendResetPassword(Request $request) {
-        $mail = $request->get('email');
+    public function sendResetPassword(string $mail) {
         $user = $this->repo->findOneBy(array('email' => $mail));
 
         if ($user !== null) {
