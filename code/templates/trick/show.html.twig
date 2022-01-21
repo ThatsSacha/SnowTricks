@@ -119,9 +119,14 @@
                                 <div class="card-title">
                                     <img src="/img/users/{{ comment.user.cover }}" alt="{{ comment.user.pseudo }}">
                                     <span>{{ comment.user.pseudo }}</span>
-                                    <span>, {{ comment.createdAt | date('d/m/Y à H:i:s') }}, n°{{ i }}</span>
+                                    <span>, {{ comment.createdAt | date('d/m/Y à H:i:s') }}</span>
                                 </div>
                                 <p>{{ comment.content }}</p>
+                                {% if app.user and comment.user.pseudo == app.user.pseudo %}
+                                    <div class="block-action">
+                                        {{ include('comment/_delete_form.html.twig') }}
+                                    </div>
+                                {% endif %}
                             </div>
                         {% endif %}
                     {% endfor %}

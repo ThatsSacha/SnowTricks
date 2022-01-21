@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Comment;
+use App\Entity\Trick;
 use App\Form\CommentType;
 use App\Repository\CommentRepository;
 use App\Service\TrickService;
@@ -72,7 +73,7 @@ class CommentController extends AbstractController
     {
         $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
-
+        
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
@@ -93,6 +94,6 @@ class CommentController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('comment_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('trick_show', ['slug' => $comment->getTrick()->getSlug()], Response::HTTP_SEE_OTHER);
     }
 }

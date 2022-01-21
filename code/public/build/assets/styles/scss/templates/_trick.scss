@@ -157,6 +157,17 @@ main {
                             margin-right: 10px;
                         }
                     }
+
+                    .block-action {
+                        display: flex;
+                        align-items: center;
+
+                        a {
+                            &:first-child {
+                                margin-right: 10px;
+                            }
+                        }
+                    }
                 }
             }
         }

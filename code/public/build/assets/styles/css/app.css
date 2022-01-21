@@ -654,6 +654,13 @@ main.trick-detail .bottom .comments .card .card-title img {
   border-radius: 100%;
   margin-right: 10px;
 }
+main.trick-detail .bottom .comments .card .block-action {
+  display: flex;
+  align-items: center;
+}
+main.trick-detail .bottom .comments .card .block-action a:first-child {
+  margin-right: 10px;
+}
 main.new-trick {
   padding-bottom: 1vh;
 }

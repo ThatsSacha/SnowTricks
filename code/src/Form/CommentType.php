@@ -4,6 +4,8 @@ namespace App\Form;
 
 use App\Entity\Comment;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -20,7 +22,12 @@ class CommentType extends AbstractType
                     'placeholder' => 'Ex: Super article !',
                 )
             ])
-            ->add('createdAt', HiddenType::class)
+            ->add('createdAt', DateTimeType::class, [
+                'label' => false,
+                'attr' => [
+                    'style' => 'display:none;'
+                ]
+            ])
             ->add('trick', HiddenType::class)
             ->add('user', HiddenType::class)
         ;

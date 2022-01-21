@@ -112,4 +112,8 @@ class TrickService {
     public function findOneBySlug(string $slug) {
         return $this->repo->findOneBy(array('slug' => $slug));
     }
+
+    public function findOneById(int $id) {
+        return $this->repo->findOneBy(array('id' => $id));
+    }
 }
