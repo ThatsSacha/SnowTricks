@@ -36,7 +36,7 @@ class UserService {
 
         if (!empty($mail) && !empty($pseudo)) {
             $isMailValid = filter_var($mail, FILTER_VALIDATE_EMAIL);
-
+            
             if ($isMailValid) {
                 $usersByMail = $this->repo->findBy(array('email' => $mail));
                 $usersByPseudo = $this->repo->findBy(array('pseudo' => $pseudo));
@@ -44,14 +44,14 @@ class UserService {
                 if (count($usersByMail) === 0 && count($usersByPseudo) === 0) {
                     $password = $user->getPassword();
                     $isPasswordValid = $this->isPasswordValid($password);
-    
+                    
                     if ($isPasswordValid) {
                         $password = $this->passwordHasher->hashPassword($user, $password);
                         $user->setPassword($password);
     
                         $cover = $request->files->get('user')['cover'];
                         $cover = $this->verifyAndRenameCover($cover);
-        
+                        
                         if ($cover !== null) {
                             $user->setCover($cover);
                             $user->setCreatedAt(date_create());
@@ -74,6 +74,12 @@ class UserService {
                                 'message' => 'Cette extension de fichier n\'est pas autorisée'
                             ];
                         }
+                    } else {
+                        return [
+                            'isError' => true,
+                            'type' => 'error',
+                            'message' => 'Le mot de passe doit contenir minimum 8 caractères et au moins 1 chiffre'
+                        ];
                     }
                 }
             }
