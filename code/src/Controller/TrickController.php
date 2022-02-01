@@ -23,7 +23,7 @@ class TrickController extends AbstractController
     }
 
     #[Route('/is-authenticated/{id}/edit', name: 'trick_edit', methods: ['GET', 'POST'], requirements: ['id' => '\d+'])]
-    public function edit(Request $request, Trick $trick, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, Trick $trick): Response
     {
         $form = $this->createForm(TrickType::class, $trick);
         $form->handleRequest($request);
@@ -53,7 +53,7 @@ class TrickController extends AbstractController
     }
 
     #[Route('/is-authenticated/new', name: 'trick_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request): Response
     {
         $trick = new Trick();
         $form = $this->createForm(TrickType::class, $trick);

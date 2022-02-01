@@ -31,7 +31,7 @@ class UserController extends AbstractController
     }
 
     #[Route('/new', name: 'user_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request): Response
     {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
@@ -56,7 +56,7 @@ class UserController extends AbstractController
     }
 
     #[Route('/needs-confirmation/{mail}', name: 'user_needs-confirmation', methods: ['GET'])]
-    public function needsConfirmation(Request $request, string $mail): Response
+    public function needsConfirmation(string $mail): Response
     {
         return $this->render('user/needs-confirmation.html.twig', [
             'mail' => $mail
