@@ -16,18 +16,6 @@ html {
             display: flex;
             flex-direction: column;
 
-            a {
-                &.link-back {
-                    span {
-                        color: $grey-light;
-                        margin-bottom: 10px;
-                        font-family: 'Roboto';
-                        font-size: 14px;
-                        font-weight: 400;
-                    }
-                }
-            }
-
             .title-container {
                 display: flex;
                 align-items: center;
@@ -60,6 +48,16 @@ html {
 
                 &:hover {
                     text-decoration: underline;
+                }
+
+                &.link-back {
+                    span {
+                        color: $grey-light;
+                        margin-bottom: 10px;
+                        font-family: 'Roboto';
+                        font-size: 14px;
+                        font-weight: 400;
+                    }
                 }
             }
 
