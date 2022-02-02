@@ -138,7 +138,8 @@
                     {% else %}
                     {% set newNumberComments = 10 %}
                 {% endif %}
-                {% if showLoadMoreButton is defined and showLoadMoreButton %}
+               
+                {% if showLoadMoreButton is defined and showLoadMoreButton and trick.comments|length > 10 %}
                     <a href="{{ path('trick_show_comments', { slug: trick.slug, numberComments: newNumberComments }) }}">
                         <button class="small blue" id="load-more">
                             <i class="bi bi-plus"></i>
