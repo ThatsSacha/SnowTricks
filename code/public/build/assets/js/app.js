@@ -25,5 +25,11 @@ $(function() {
 
     $('button.show-media').on('click', () => {
         $('.trick-media-list').toggleClass('is-active');
+        
+        if ($('.trick-media-list').hasClass('is-active')) {
+            $('button.show-media span').text('Cacher les médias');
+        } else {
+            $('button.show-media span').text('Voir les médias');
+        }
     });
 });
