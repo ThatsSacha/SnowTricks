@@ -123,6 +123,9 @@ html body main h2 {
   font-weight: 500;
   margin-bottom: 10px;
 }
+html body main h2.trick-group-name {
+  align-self: flex-start;
+}
 html body main svg {
   align-self: center;
   height: 300px;
