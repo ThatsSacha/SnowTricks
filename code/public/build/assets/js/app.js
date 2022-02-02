@@ -6,7 +6,7 @@ $(function() {
         if (!$(this).children('.round').children('input').prop('checked')) {
             $(this).children('.round').children('input').prop('checked', true);
         } else {
-            $(this).children('.round').children('input').prop('checked', false)
+            $(this).children('.round').children('input').prop('checked', false);
         }
 
         $(this).parent().parent().children('.textarea').toggleClass('is-active');
@@ -25,5 +25,5 @@ $(function() {
 
     $('button.show-media').on('click', () => {
         $('.trick-media-list').toggleClass('is-active');
-    })
+    });
 });
