@@ -143,13 +143,17 @@ html body main a.link-back span {
 }
 html body main .trick-container {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 html body main .trick-container .trick-item {
   border-radius: 8px;
   background-color: white;
   display: flex;
   flex-direction: column;
-  width: 250px;
+  width: 30%;
+  max-width: 350px;
+  min-width: 200px;
   text-align: center;
   margin: 10px;
   height: 200px;
@@ -182,6 +186,9 @@ html body main .trick-container .trick-item .bottom {
   }
   html body main .trick-container .trick-item {
     width: 100%;
+    max-width: unset;
+    margin-right: 0;
+    margin-left: 0;
   }
   html body main .trick-container .trick-item .bottom a button {
     width: 100%;

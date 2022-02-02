@@ -63,13 +63,17 @@ html {
 
             .trick-container {
                 display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
     
                 .trick-item {
                     border-radius: $border-radius;
                     background-color: white;
                     display: flex;
                     flex-direction: column;
-                    width: 250px;
+                    width: 30%;
+                    max-width: 350px;
+                    min-width: 200px;
                     text-align: center;
                     margin: 10px;
                     height: 200px;
@@ -113,6 +117,9 @@ html {
                 .trick-container {
                     .trick-item {
                         width: 100%;
+                        max-width: unset;
+                        margin-right: 0;
+                        margin-left: 0;
 
                         .bottom {
                             a {
