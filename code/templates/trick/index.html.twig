@@ -14,28 +14,36 @@
             </a>
         </div>
         {% if tricks|length > 0 %}
-            <div class="trick-container">
-                {% for trick in tricks %}
-                    {% set continue = true %}
-                    <div class="trick-item">
-                        {% for trickMedia in trick.trickMedia %}
-                            {% if trickMedia.isImg and continue %}
-                                <div class="top" style="background-image: url({{ trickMedia.url }})"></div>
-                                {% set continue = false %}
-                            {% endif %}
+            {% set previousSection = null %}
+            {% for trick in tricks %}
+                {% set currentSection = trick.trickGroup.name %}
+
+                {% if previousSection is not defined or currentSection != previousSection %}
+                    <h2 class="trick-group-name">{{ currentSection }}</h2>
+                    <div class="trick-container">
+                        {% for trick in trick.trickGroup.tricks %}
+                            {% set continue = true %}
+                            <div class="trick-item">
+                                {% for trickMedia in trick.trickMedia %}
+                                    {% if trickMedia.isImg and continue %}
+                                        <div class="top" style="background-image: url({{ trickMedia.url }})"></div>
+                                        {% set continue = false %}
+                                    {% endif %}
+                                {% endfor %}
+                                <div class="bottom">
+                                    <h2>{{ trick.name }}</h2>
+                                    <a href="{{ path('trick_show', {'slug': trick.slug}) }}">
+                                        <button>
+                                            <i class="bi bi-arrow-return-right"></i>
+                                            Voir le trick
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
                         {% endfor %}
-                        <div class="bottom">
-                            <h2>{{ trick.name }}</h2>
-                            <a href="{{ path('trick_show', {'slug': trick.slug}) }}">
-                                <button>
-                                    <i class="bi bi-arrow-return-right"></i>
-                                    Voir le trick
-                                </button>
-                            </a>
-                        </div>
                     </div>
-                {% endfor %}
-            </div>
+                {% endif %}
+            {% endfor %}
         {% endif %}
 
         {% if tricks|length == 0 %}
