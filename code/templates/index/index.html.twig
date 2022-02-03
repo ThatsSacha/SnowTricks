@@ -18,10 +18,16 @@
         </section>
         {% if tricks|length > 0 %}
             {% set previousSection = null %}
+            {% set sectionsLoaded = [] %}
             {% for trick in tricks %}
                 {% set currentSection = trick.trickGroup.name %}
 
-                {% if previousSection is not defined or currentSection != previousSection %}
+                {% if
+                    previousSection is not defined or
+                    currentSection != previousSection and
+                    currentSection not in sectionsLoaded
+                %}
+                    {% set sectionsLoaded = sectionsLoaded|merge([currentSection]) %}
                     <h2 class="trick-group-name">{{ currentSection }}</h2>
                     <section class="trick-container" id="trick-container">
                         {% for trick in trick.trickGroup.tricks %}
