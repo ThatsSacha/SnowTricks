@@ -40,8 +40,9 @@ And then
 ```sh
 cd Snowtricks
 composer install
+php bin/console d:d:c
+php bin/console d:m:m
 ```
-Now, you need to open you database system managment, create a new database (named like "Snowtricks") and import inside de _Snowtricks.sql_ file
 
 If you run _Snowtricks_ under MAMP or WAMP, run on your browser http://localhost:[port]/Snowtricks
 
